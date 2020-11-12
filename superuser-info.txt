@@ -1,2 +1,7 @@
 user: admin
 pass: pepe1234
+
+
+Superusuario 2:
+user: Administrador
+pass: pepito1234
