@@ -9,7 +9,7 @@ class Direccion(models.Model):
         verbose_name_plural = 'Direcciones'
 
     def __str__(self):
-        return ": " + str(self.calle) + " " + str(self.altura)        
+        return " " + str(self.calle) + " " + str(self.altura)        
 
 class Persona(models.Model):
     nombre = models.CharField(max_length=50)
@@ -26,7 +26,7 @@ class Cliente(Persona):
     codigo = models.CharField(max_length=20)
 
     def __str__(self):
-        return ": " + str(self.nombre)     
+        return " " + str(self.nombre)     
 
 class Administrador(Persona):
     codigo = models.CharField(max_length=20)
@@ -45,7 +45,7 @@ class Estado(models.Model):
     estado = models.CharField(max_length = 50,choices = status, default='Disponible')
 
     def __str__(self):
-        return ": " + str(self.estado)    
+        return " " + str(self.estado)    
 
 class TipoHabitacion(models.Model):
     tipoHabitacion = models.CharField(max_length=10)
@@ -55,7 +55,7 @@ class TipoHabitacion(models.Model):
         verbose_name_plural = 'Tipos de Habitaciones'
 
     def __str__(self):
-        return ": " + str(self.tipoHabitacion)     
+        return " " + str(self.tipoHabitacion)     
 
 class Habitacion(models.Model):
     precioNoche = models.IntegerField()
@@ -71,16 +71,19 @@ class Habitacion(models.Model):
         verbose_name_plural = 'Habitaciones'
     
     def __str__(self):
-        return ": " + str(self.numHabitacion)        
+        return " " + str(self.numHabitacion)        
 
 class Hotel(models.Model):
     nombre = models.CharField(max_length=50)
     estrellas = models.IntegerField()
-    habitaciones = models.ForeignKey(Habitacion, on_delete=models.CASCADE, default = None, blank = True, null = True)
+    habitaciones = models.ManyToManyField(Habitacion, default = None, blank = True)
     direccion =  models.ForeignKey(Direccion, on_delete=models.CASCADE, default = None, blank = True, null = True)     
 
     class Meta:
         verbose_name = 'Hotel'
         verbose_name_plural = 'Hoteles'
+
+    def __str__(self):
+        return " " + str(self.nombre)        
 
 # Create your models here.
