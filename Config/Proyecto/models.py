@@ -1,11 +1,22 @@
 from django.db import models
 
+class Direccion(models.Model):
+    calle = models.CharField(max_length=100)
+    altura = models.IntegerField()
+
+    class Meta:
+        verbose_name = 'Direccion'
+        verbose_name_plural = 'Direcciones'
+
+    def __str__(self):
+        return ": " + str(self.calle) + " " + str(self.altura)        
 
 class Persona(models.Model):
     nombre = models.CharField(max_length=50)
     apellido = models.CharField(max_length=50)
     mail = models.CharField(max_length=100)
     telefono = models.CharField(max_length=12)
+    direccion = models.ForeignKey(Direccion, on_delete=models.CASCADE, default = None, blank = True, null = True)
 
     class Meta:
         verbose_name = "Persona"
@@ -14,6 +25,9 @@ class Persona(models.Model):
 class Cliente(Persona):
     codigo = models.CharField(max_length=20)
 
+    def __str__(self):
+        return ": " + str(self.nombre)     
+
 class Administrador(Persona):
     codigo = models.CharField(max_length=20)
 
@@ -21,13 +35,6 @@ class Administrador(Persona):
         verbose_name = 'Administrador'
         verbose_name_plural = 'Administradores'
 
-class Direccion(models.Model):
-    calle = models.CharField(max_length=100)
-    altura = models.IntegerField()
-
-    class Meta:
-        verbose_name = 'Direccion'
-        verbose_name_plural = 'Direcciones'
 
 class Estado(models.Model):
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
@@ -37,12 +44,18 @@ class Estado(models.Model):
     ]
     estado = models.CharField(max_length = 50,choices = status, default='Disponible')
 
+    def __str__(self):
+        return ": " + str(self.estado)    
+
 class TipoHabitacion(models.Model):
     tipoHabitacion = models.CharField(max_length=10)
 
     class Meta:
         verbose_name = 'Tipo de Habitacion'
         verbose_name_plural = 'Tipos de Habitaciones'
+
+    def __str__(self):
+        return ": " + str(self.tipoHabitacion)     
 
 class Habitacion(models.Model):
     precioNoche = models.IntegerField()

@@ -14,7 +14,7 @@ class ClienteAdmin(admin.ModelAdmin):
             'fields' : ('nombre', 'apellido', 'codigo')
         }),
         ('Contacto', {
-            'fields' : ('telefono', 'mail')
+            'fields' : ('telefono', 'mail', 'direccion')
         })
     )
 
@@ -37,12 +37,14 @@ class EstadoAdmin(admin.ModelAdmin):
 class HabitacionAdmin(admin.ModelAdmin):
     list_display = ('precioNoche', 'numHabitacion', 'cantDormitorios', 'cantBanios', 'estado', 'tipohabitacion', 'img_habitacion')
 
+class TipoHabitacionAdmin(admin.ModelAdmin):
+    list_display = ('tipoHabitacion',)
+
 
 # Register your models here.
-admin.site.register(Persona,)
 admin.site.register(Cliente, ClienteAdmin)
 admin.site.register(Administrador, AdministradorAdmin)
 admin.site.register(Direccion,)
 admin.site.register(Estado, EstadoAdmin)
-admin.site.register(TipoHabitacion,)
+admin.site.register(TipoHabitacion, TipoHabitacionAdmin)
 admin.site.register(Habitacion, HabitacionAdmin)
