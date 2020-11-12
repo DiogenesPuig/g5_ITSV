@@ -51,6 +51,7 @@ class Habitacion(models.Model):
     cantBanios = models.IntegerField()
     estado = models.ForeignKey(Estado, on_delete=models.CASCADE,default=None)
     tipohabitacion = models.ForeignKey(TipoHabitacion, on_delete=models.CASCADE,default=None)
+    img_habitacion = models.ImageField(max_length=100, upload_to='img_habitacion/', blank=True)
     class Meta:
         verbose_name = 'Habitacion'
         verbose_name_plural = 'Habitaciones'
