@@ -40,6 +40,8 @@ class HabitacionAdmin(admin.ModelAdmin):
 class TipoHabitacionAdmin(admin.ModelAdmin):
     list_display = ('tipoHabitacion',)
 
+class HotelAdmin(admin.ModelAdmin):
+    list_display = ('nombre', 'estrellas', 'habitaciones', 'direccion')
 
 # Register your models here.
 admin.site.register(Cliente, ClienteAdmin)
@@ -48,3 +50,4 @@ admin.site.register(Direccion,)
 admin.site.register(Estado, EstadoAdmin)
 admin.site.register(TipoHabitacion, TipoHabitacionAdmin)
 admin.site.register(Habitacion, HabitacionAdmin)
+admin.site.register(Hotel, HotelAdmin)

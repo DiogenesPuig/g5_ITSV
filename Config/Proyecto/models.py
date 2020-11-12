@@ -65,8 +65,22 @@ class Habitacion(models.Model):
     estado = models.ForeignKey(Estado, on_delete=models.CASCADE,default=None)
     tipohabitacion = models.ForeignKey(TipoHabitacion, on_delete=models.CASCADE,default=None)
     img_habitacion = models.ImageField(max_length=100, upload_to='img_habitacion/', blank=True)
+    
     class Meta:
         verbose_name = 'Habitacion'
         verbose_name_plural = 'Habitaciones'
+    
+    def __str__(self):
+        return ": " + str(self.numHabitacion)        
+
+class Hotel(models.Model):
+    nombre = models.CharField(max_length=50)
+    estrellas = models.IntegerField()
+    habitaciones = models.ForeignKey(Habitacion, on_delete=models.CASCADE, default = None, blank = True, null = True)
+    direccion =  models.ForeignKey(Direccion, on_delete=models.CASCADE, default = None, blank = True, null = True)     
+
+    class Meta:
+        verbose_name = 'Hotel'
+        verbose_name_plural = 'Hoteles'
 
 # Create your models here.
