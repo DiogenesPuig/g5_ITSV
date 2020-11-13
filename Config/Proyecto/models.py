@@ -40,7 +40,7 @@ class Habitacion(models.Model):
     precio_noche = models.IntegerField()
     num_habitacion = models.IntegerField()
     cant_dormitorios = models.IntegerField()
-    cant_Banios = models.IntegerField()
+    cant_banios = models.IntegerField()
     estado = models.ForeignKey(Estado, on_delete=models.CASCADE,default=None)
     status=[
     ('Suite', 'S'),
