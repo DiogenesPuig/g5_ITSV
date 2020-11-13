@@ -60,7 +60,7 @@ class Habitacion(models.Model):
         verbose_name_plural = 'Habitaciones'
     
     def __str__(self):
-        return " " + str(self.numHabitacion)        
+        return " " + str(self.num_habitacion)        
 
 class Hotel(models.Model):
     nombre = models.CharField(max_length=50)
