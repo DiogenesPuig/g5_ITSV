@@ -37,10 +37,10 @@ class Estado(models.Model):
         return " " + str(self.estado)    
 
 class Habitacion(models.Model):
-    precioNoche = models.IntegerField()
-    numHabitacion = models.IntegerField()
-    cantDormitorios = models.IntegerField()
-    cantBanios = models.IntegerField()
+    precio_noche = models.IntegerField()
+    num_habitacion = models.IntegerField()
+    cant_dormitorios = models.IntegerField()
+    cant_Banios = models.IntegerField()
     estado = models.ForeignKey(Estado, on_delete=models.CASCADE,default=None)
     status=[
     ('Suite', 'S'),
