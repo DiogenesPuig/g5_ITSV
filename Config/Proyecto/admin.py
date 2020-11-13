@@ -3,8 +3,6 @@ from Proyecto.models import *
 
 
 
-
-
 class ClienteAdmin(admin.ModelAdmin):
     list_display = ('nombre', 'apellido','mail', 'telefono', 'codigo')
 
@@ -14,7 +12,7 @@ class ClienteAdmin(admin.ModelAdmin):
             'fields' : ('nombre', 'apellido', 'codigo')
         }),
         ('Contacto', {
-            'fields' : ('telefono', 'mail', 'direccion')
+            'fields' : ('telefono', 'mail')
         })
     )
 
@@ -35,10 +33,12 @@ class EstadoAdmin(admin.ModelAdmin):
     list_display = ('cliente', 'estado')    
 
 class HabitacionAdmin(admin.ModelAdmin):
-    list_display = ('precioNoche', 'numHabitacion', 'cantDormitorios', 'cantBanios', 'estado', 'tipohabitacion', 'img_habitacion')
+    list_display = ('precioNoche', 'numHabitacion', 'cantDormitorios', 'cantBanios', 'estado', 'tipo_habitacion', 'img_habitacion')
 
+'''
 class TipoHabitacionAdmin(admin.ModelAdmin):
     list_display = ('tipoHabitacion',)
+'''
 
 class HotelAdmin(admin.ModelAdmin):
     list_display = ('nombre', 'estrellas', 'direccion')
@@ -46,8 +46,6 @@ class HotelAdmin(admin.ModelAdmin):
 # Register your models here.
 admin.site.register(Cliente, ClienteAdmin)
 admin.site.register(Administrador, AdministradorAdmin)
-admin.site.register(Direccion,)
 admin.site.register(Estado, EstadoAdmin)
-admin.site.register(TipoHabitacion, TipoHabitacionAdmin)
 admin.site.register(Habitacion, HabitacionAdmin)
 admin.site.register(Hotel, HotelAdmin)
