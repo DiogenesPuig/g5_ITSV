@@ -6,6 +6,10 @@ from Proyecto.models import Hotel
 class HomeView(TemplateView):
     template_name = 'Proyecto/home.html'
 
+    def get(self,request,*args,**kwargs):
+        context= self.get_context_data(***kwargs)
+        context['hotel']=Hotel.objects.get(id=1)
+        return self.render_to_response(context)
 
 def hotel(request):
     hotel= Hotel.objects.get(id=1)
