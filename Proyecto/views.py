@@ -1,10 +1,24 @@
 from django.shortcuts import render, render_to_response
 from django.views.generic import TemplateView
-from Proyecto.models import Hotel
+from Proyecto.models import *
 
 # Create your views here.
 class HomeView(TemplateView):
     template_name = 'Proyecto/home.html'
+
+
+
+    def get(self, request, *args, **kwargs):
+        context = self.get_context_data(**kwargs)
+        #Creando publicaciones
+        h = Hotel.objects.all()
+        hoteles = ""
+        for hs in h:
+            hoteles += "<div> <h2>" +str(hs.nombre)+"</h2><br>" + "</div><br>"
+            print("Esto esta pasando")
+        context['hotel'] = h.get(id=1).nombre
+        return self.render_to_response(context)
+
 
 
 def hotel(request):
