@@ -1,0 +1,10 @@
+body {
+    background-color: pink;
+    text-align: center;
+  }
+
+#b {
+  color: rgb(10, 6, 73);
+  font-size: 130px;
+  font-variant: small-caps;
+}

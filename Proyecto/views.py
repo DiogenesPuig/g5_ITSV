@@ -14,7 +14,7 @@ class HomeView(TemplateView):
         h = Hotel.objects.all()
         hoteles = ""
         for hs in h:
-            hoteles += "<div> <h2>" +str(hs.nombre)+"</h2><br>" + "</div><br>"
+            hoteles += str(hs.nombre) + "      "  
             print(hoteles)
         context['hotel'] = hoteles
         return self.render_to_response(context)
