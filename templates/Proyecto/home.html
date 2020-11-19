@@ -1,12 +1,20 @@
 {% extends "admin/base_site.html" %}
+{% load staticfiles %}
 
 {% block breadcrumbs %}{% endblock %}
 
 {% block content %}
 
+	
+<head>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+
 <div id ="b">
     <br>
-    <h1>aca tiene q haber hoteles</h1>
+    <h1>Aca tiene que haber Hoteles</h1>
     {{ hotel }}
 </div>
 
@@ -14,4 +22,5 @@
         data_from_django = {{ hotel }};
         widget.init(data_from_django);
     </script>
+</body>
 {% endblock %}
