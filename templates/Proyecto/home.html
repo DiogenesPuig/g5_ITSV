@@ -9,4 +9,9 @@
     <h1>aca tiene q haber hoteles</h1>
     {{ hotel }}
 </div>
+
+    <script src="/templates/Proyecto/script.js">
+        data_from_django = {{ hotel }};
+        widget.init(data_from_django);
+    </script>
 {% endblock %}
