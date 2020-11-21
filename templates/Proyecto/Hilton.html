@@ -5,6 +5,7 @@
 
 {% block content %}
 
+
 	
 <head>
     <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
@@ -20,7 +21,8 @@
     <h2 id = "hilton" > wololo </h2>
     <p id = "hilton23" > wenas criaturitas del swñor</p>
     <br>
-    {{ hotel }} Estrellas
+
+    {{ hotel|get_item:hotel}} Estrellas
     {{ x }}
 </div> 
 

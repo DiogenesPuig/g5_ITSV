@@ -4,6 +4,13 @@ from Proyecto.models import *
 import json
 from django.shortcuts import render 
 from json import dumps 
+from django.template.defaulttags import register
+from django.http import HttpResponse
+
+
+@register.filter
+def get_item(dictionary, key):
+    return HttpResponse(dictionary.get(key))
 
 
 # Create your views here.
@@ -24,11 +31,7 @@ class HomeView(TemplateView):
         return self.render_to_response(context)
 
 
-def hotel(request):
-    hotel = Hotel.objects.get(id=1)
-    return render(request, 'Proyecto/home.html',
-                  {'name': request.user, 'hotel': hotel.nombre, 'estrellas': hotel.estrellas,
-                   'direccion': hotel.direccion})
+
 
 class HomeView2(HomeView):
     template_name = 'Proyecto/Hilton.html'
