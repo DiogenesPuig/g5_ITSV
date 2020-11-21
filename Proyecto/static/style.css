@@ -5,6 +5,17 @@ body {
 
 #b {
   color: rgb(10, 6, 73);
-  font-size: 130px;
+  font-size: 63px;
   font-variant: small-caps;
+}
+
+.b1 {
+  font-size: medium;
+  border-color: springgreen;
+}
+
+.b2 {
+  font-size: medium;
+  margin-right: 1300px;
+  margin-top: 777px;
 }

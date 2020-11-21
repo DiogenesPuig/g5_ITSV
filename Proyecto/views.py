@@ -2,6 +2,8 @@ from django.shortcuts import render, render_to_response
 from django.views.generic import TemplateView
 from Proyecto.models import *
 import json
+from django.shortcuts import render 
+from json import dumps 
 
 
 # Create your views here.
@@ -27,3 +29,9 @@ def hotel(request):
     return render(request, 'Proyecto/home.html',
                   {'name': request.user, 'hotel': hotel.nombre, 'estrellas': hotel.estrellas,
                    'direccion': hotel.direccion})
+
+class HomeView2(HomeView):
+    template_name = 'Proyecto/Hilton.html'
+
+
+    
