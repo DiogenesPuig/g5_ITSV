@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
 </head>
 
-<body>
+<body onload="Name()">
 
 <div id ="b">
     <br>
@@ -37,13 +37,13 @@
             {% endif %}
         </span>
     </div>
+  
+    <p id = "demo"> wololo </p>    
+    {% for hoteles in hotel%}
+        {{ hoteles.nombre }}
+    {% endfor %}
 </div>
 
-    <script src="/static/script.js">
-        data_from_django = {{ hotel }};
-        widget.init(data_from_django);
-    </script>
 
-<button class="b1" onclick="window.location.href='page2';">Reservar</button>
 </body>
 {% endblock %}
