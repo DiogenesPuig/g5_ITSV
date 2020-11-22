@@ -66,7 +66,8 @@ class Hotel(models.Model):
     nombre = models.CharField(max_length=50)
     estrellas = models.IntegerField()
     habitaciones = models.ManyToManyField(Habitacion, default = None, blank = True)
-    direccion = models.CharField(max_length=50, default = None, blank = True)    
+    direccion = models.CharField(max_length=50, default = None, blank = True)
+    img_hotel = models.ImageField(max_length=100, default = '/img_hoteles/hotel-generic.jpg', upload_to='img_hoteles/', blank=True, null = True)   
 
     class Meta:
         verbose_name = 'Hotel'

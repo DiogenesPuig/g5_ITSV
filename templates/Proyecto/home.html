@@ -15,10 +15,17 @@
 <div id ="b">
     <br>
     <h1>Aca tiene que haber Hoteles</h1>
-    {% for hotel in hotel %}
-        <a href="{% url "login" %}"><h2>{{hotel.nombre}}</h2></a> <!--Cambiar login x la url de los hoteles-->
-    {% endfor %}
-
+    <div class = "grid-container">
+        {% for hotel in hotel %}
+        
+            <div class = "grid-item">  
+                <a href="{% url "login" %}" ><img class="zoom" src=/media/{{hotel.img_hotel}} style="width: 350px; height: 200px;"></a> 
+                <a href="{% url "login" %}" ><h2>{{hotel.nombre}}</h2></a> <!--Cambiar login x la url de los hoteles-->
+                <br>
+            </div>
+        
+        {% endfor %}
+    </div>        
 
     <div class="pagination">
         <span class="step-links">
