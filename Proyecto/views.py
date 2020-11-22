@@ -2,6 +2,7 @@ from django.shortcuts import render, render_to_response
 from django.views.generic import TemplateView
 from Proyecto.models import *
 import json
+
 from django.shortcuts import render, redirect
 from django.core.exceptions import PermissionDenied
 from django.http import Http404
@@ -12,6 +13,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.core.paginator import Paginator
+
 
 from .forms import CreateUserForm, UserForm
 from .models import *
@@ -83,3 +85,4 @@ def RegisterView(request):
 def LogoutUser(request):
     logout(request)
     return redirect('login')
+

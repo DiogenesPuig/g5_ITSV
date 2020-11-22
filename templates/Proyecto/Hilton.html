@@ -1,0 +1,51 @@
+{% extends "admin/base_site.html" %}
+{% load staticfiles %}
+
+{% block breadcrumbs %}{% endblock %}
+
+{% block content %}
+
+
+	
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
+
+<body onload="Name()">
+
+<div id ="b">
+
+
+    <h1> Hotel Hilton</h1>
+    <br> 
+    <h2 id = "hilton" > wololo </h2>
+    <p id = "hilton23" > wenas criaturitas del swñor</p>
+    <br>
+{% for hoteles in hotel%}
+    {{ hoteles.nombre }}
+{% endfor %}
+    {{ x }}
+</div> 
+
+<p id="demo">asasdafdd</p>
+
+<!--<script>
+    function ola(){
+        document.getElementById("demo").innerHTML = "douu";
+    }
+
+</script> -->
+
+
+
+<script>
+var dou = {{ hotel.15 }};
+function Name() {
+    var x = document.getElementById("hilton").innerHTML = dou ;
+    return x;
+    }
+</script>
+    <!--CAMBIAR lo de abajo DESPUES-->
+    <button class="b2" onclick="window.location.href='http://127.0.0.1:8000/';">Volver</button> 
+</body>
+{% endblock %}
