@@ -1,8 +1,11 @@
 from django.urls import path,include
-from Proyecto.views import HomeView
-from Proyecto.views import HomeView2
+
+from Proyecto.views import *
+
 
 urlpatterns = [
     path('', HomeView.as_view(), name='home'),
-    path('page2', HomeView2.as_view(), name='page2')
+    path('login', LoginView, name='login'),
+    path('register', RegisterView,name='register'),
+    path('logout',LogoutUser,name="logout"),
 ]
