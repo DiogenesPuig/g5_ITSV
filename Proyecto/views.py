@@ -20,21 +20,22 @@ class HomeView(TemplateView):
     def get(self, request, *args, **kwargs):
         context = self.get_context_data(**kwargs)
         # Creando publicaciones
-        h = Hotel.objects.all().values_list()
-        jso = []
+        h = Hotel.objects.all().values()
+        ##jso = []
         hoteles = ""
-        for hs in h:
-            jso += {hs}
-        cadena = json.dumps(jso)
-        print(cadena)
-        context['hotel'] = cadena
-        return self.render_to_response(context)
+        ##for hs in h:
+        ##    jso += {hs}
+        ##cadena = json.dumps(jso)
+        ##print(cadena)
+        context['hotel'] = h
+        return self.render_to_response(context)    
 
 
 
 
 class HomeView2(HomeView):
     template_name = 'Proyecto/Hilton.html'
+
 
 
     

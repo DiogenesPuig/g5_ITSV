@@ -21,8 +21,9 @@
     <h2 id = "hilton" > wololo </h2>
     <p id = "hilton23" > wenas criaturitas del swñor</p>
     <br>
-
-    {{ hotel|get_item:hotel}} Estrellas
+{% for hoteles in hotel%}
+    {{ hoteles.nombre }}
+{% endfor %}
     {{ x }}
 </div> 
 
