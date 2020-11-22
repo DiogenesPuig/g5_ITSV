@@ -10,18 +10,26 @@
     <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
 </head>
 
-<body>
+<body onload="Name()">
 
 <div id ="b">
     <br>
     <h1>Aca tiene que haber Hoteles</h1>
-    {{ hotel }}
+    <p id = "demo"> wololo </p>    
+    {% for hoteles in hotel%}
+        {{ hoteles.nombre }}
+    {% endfor %}
 </div>
 
-    <script src="/static/script.js">
-        data_from_django = {{ hotel }};
-        widget.init(data_from_django);
-    </script>
+<!--<script>
+    function Name(){
+        var h = {{ hotel }}
+   //     for (hoteles in h){
+   //         ab = hoteles;
+   //     }
+        document.getElementById("demo").innerHTML = h;
+    }
+</script>--> 
 
 <button class="b1" onclick="window.location.href='page2';">Reservar</button>
 </body>
