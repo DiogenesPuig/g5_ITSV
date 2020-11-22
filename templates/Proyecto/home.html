@@ -15,25 +15,25 @@
 <div id ="b">
     <br>
     <h1>Aca tiene que haber Hoteles</h1>
-    {% for hotel in hotel %}
-        <a href="{% url "login" %}"><h2>{{hotel.nombre}}</h2></a> <!--Cambiar login x la url de los hoteles-->
+    {% for hotel in hoteles %}
+        <a href="{% url 'hoteles' hotel.id  %}"> <h2>{{hotel.nombre}}</h2> </a> <!--Cambiar login x la url de los hoteles-->
     {% endfor %}
 
 
     <div class="pagination">
         <span class="step-links">
-            {% if hotel.has_previous %}
+            {% if hoteles.has_previous %}
                 <a href="?page=1"><h1>&laquo; first</h1></a>
-                <a href="?page={{ hotel.previous_page_number }}"><h1>previous</h1></a>
+                <a href="?page={{ hoteles.previous_page_number }}"><h1>previous</h1></a>
             {% endif %}
 
             <span class="current" style="size:5px">
-                <h2> Page {{ hotel.number }} of {{ hotel.paginator.num_pages }}. </h2>
+                <h2> Page {{ hoteles.number }} of {{ hoteles.paginator.num_pages }}. </h2>
             </span>
 
-            {% if hotel.has_next %}
-                <a href="?page={{ hotel.next_page_number }}"><h1>next</h1></a>
-                <a href="?page={{ hotel.paginator.num_pages }}"><h1>last &raquo;</h1></a>
+            {% if hoteles.has_next %}
+                <a href="?page={{ hoteles.next_page_number }}"><h1>next</h1></a>
+                <a href="?page={{ hoteles.paginator.num_pages }}"><h1>last &raquo;</h1></a>
             {% endif %}
         </span>
     </div>

@@ -1,6 +1,40 @@
 {% extends 'Proyecto/home.html' %}
 
 {% block content %}
+    <br>
+    <div class = arriba>
+        <div class="vista_previa">
 
+        </div>
+        <div class="descripcion">
+            <div class="row justify-content-center">
+                    <a href="{% url 'login' %}" class="ml-2"><h1> {{hoteles.nombre}} </h1></a>
+            </div>
+        </div>
+        </div>
+    <div class="habitaciones">
+        {% for habitacion in habitaciones %}
+        <a href="{% url "login" %}"><h2>{{habitacion.nombre}}</h2></a> <!--Cambiar login x la url de los hoteles-->
+        {% endfor %}
+
+        <div class="pagination">
+            <span class="step-links">
+                {% if habitaciones.has_previous %}
+                    <a href="?page=1"><h1>&laquo; first</h1></a>
+                    <a href="?page={{ habitaciones.previous_page_number }}"><h1>previous</h1></a>
+                {% endif %}
+
+                <span class="current" style="size:5px">
+                    <h2> Page {{ habitaciones.number }} of {{ habitaciones.paginator.num_pages }}. </h2>
+                </span>
+
+                {% if habitaciones.has_next %}
+                    <a href="?page={{ habitaciones.next_page_number }}"><h1>next</h1></a>
+                    <a href="?page={{ habitaciones.paginator.num_pages }}"><h1>last &raquo;</h1></a>
+                {% endif %}
+            </span>
+        </div>
+
+    </div>
 
 {% endblock %}
