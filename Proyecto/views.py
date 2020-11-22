@@ -86,3 +86,12 @@ def LogoutUser(request):
     logout(request)
     return redirect('login')
 
+def HotelesView(request):
+    hoteles = Hotel.objects.all()
+    habitaciones = Habitacion.objects.all()
+
+    context= {
+        'hoteles':hoteles,
+        'habitaciones':habitaciones
+    }
+    return render(request,'Proyecto/hoteles.html',context)
