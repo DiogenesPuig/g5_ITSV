@@ -74,6 +74,18 @@ class Hotel(models.Model):
         verbose_name_plural = 'Hoteles'
 
     def __str__(self):
-        return " " + str(self.nombre)        
+        return " " + str(self.nombre)       
+
+#    def habs(self):
+#        strl = " "
+#
+#        for ele in self.habitaciones:
+#            strl += " " + ele
+#
+#        return strl
+#
+#    habs.habitaciones = True 
+
+
 
 # Create your models here.

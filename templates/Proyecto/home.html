@@ -15,6 +15,26 @@
 <div id ="b">
     <br>
     <h1>Aca tiene que haber Hoteles</h1>
+    <p>
+        Busca hoteles uwu
+        <input type="submit" value="Buscar">
+    </p>
+    {% for hotel in hotel %}
+        <p>{{hotel.habitaciones.all}}</p>
+    {% endfor %}
+    <datalist id = "habitaciones">
+
+        <option value="Hab">
+
+            {{hotel.habitaciones}}
+
+        </option>
+
+
+
+    </datalist>
+
+
     <div class = "grid-container">
         {% for hotel in hotel %}
         
