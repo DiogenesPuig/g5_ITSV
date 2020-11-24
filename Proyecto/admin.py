@@ -41,7 +41,7 @@ class TipoHabitacionAdmin(admin.ModelAdmin):
 '''
 
 class HotelAdmin(admin.ModelAdmin):
-    list_display = ('nombre', 'estrellas', 'direccion')
+    list_display = ('nombre', 'estrellas', 'direccion', 'img_hotel',)
 
 # Register your models here.
 admin.site.register(Cliente, ClienteAdmin)

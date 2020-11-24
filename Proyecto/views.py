@@ -90,14 +90,16 @@ def LogoutUser(request):
 def HotelesView(request,Hotel):
     from .models import Hotel as hotel 
     hoteles = hotel.objects.get(pk=Hotel) #Aca deberiamos llamar a las habitaciones del hotel que queremos
-    habitaciones = Habitacion.objects.filter(hotel=Hotel)
+    habitaciones = Habitacion.objects.all()
     paginator = Paginator(habitaciones, 25)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
+    h = hoteles.habitaciones
 
     context= {
         'hoteles':hoteles,
         'habitaciones':page_obj,
+        'h': h,
     }
     return render(request,'Proyecto/hoteles.html',context)
 
