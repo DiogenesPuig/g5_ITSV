@@ -19,8 +19,8 @@
         Busca hoteles uwu
         <input type="submit" value="Buscar">
     </p>
-    {% for hotel in hotel %}
-        <p>{{hotel.habitaciones.all}}</p>
+    {% for hoteles in hotel.habitaciones.all %}
+        <p>{{hoteles.num_habitacion}}</p>
     {% endfor %}
     <datalist id = "habitaciones">
 
