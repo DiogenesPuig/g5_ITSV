@@ -127,7 +127,13 @@ def HotelesView(request,Hotel):
     }
     return render(request,'Proyecto/hoteles.html',context)
 
-def HabitacionView(request,):
-
+def HabitacionView(request,Habitacion):
+    from .models import  Habitacion as habitacion
+    habitaciones = habitacion.objects.get(pk=Habitacion)
     hotel = Hotel.objects.all()
-    return render(request, 'Proyecto/ignore/habitaciones.html', {'hotel': hotel})
+
+    context= {
+        'habitacion':habitaciones,
+        'hotel': hotel
+    }
+    return render(request,'Proyecto/ignore/habitaciones.html',context)

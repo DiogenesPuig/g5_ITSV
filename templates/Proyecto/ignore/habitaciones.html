@@ -15,18 +15,10 @@
             <h1>{{forloop.counter}}. {{hoteles.nombre}}</h1>    
             
             <p>{{hoteles.content}}</p>    
-            
         {% endfor %}
     
     </div>
-
-    <form class="form-inline my-2 my-lg-0" action="{% url 'habitaciones' %}">   
-         
-        <input class="form-control mr-sm-2" type="search"   placeholder="Search" aria-label="Search" name="search">  
-
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    
-    </form>
-
+    <h1>{{habitacion.img_habitacion}}</h1>
+    <h1>{{hotel.nombre}}</h1>
 </body>
 </html>

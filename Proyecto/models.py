@@ -51,7 +51,7 @@ class Habitacion(models.Model):
     ('Presidencial', 'Presidencial'),
     ]
     tipo_habitacion = models.CharField(max_length = 50,choices = status, default='Normal')
-    img_habitacion = models.ImageField(max_length=100, default='/img_habitaciones/habitacion_prueba.jpg', upload_to='img_habitacion/', blank=True, null=True)
+    img_habitacion = models.ImageField(max_length=100, default='/img_habitacion/habitacion_prueba.jpg', upload_to='img_habitacion/', blank=True, null=True)
 
 
     
