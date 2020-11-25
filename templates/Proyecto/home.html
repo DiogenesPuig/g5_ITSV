@@ -25,18 +25,19 @@
             </div>    
         {% endfor %}
 
+        <ul>
+
+            {{results}}
+        </ul>
+        
+
     </div>  
-    <datalist id = "habitaciones">
 
-        <option value="Hab">
+    <form type="get" action="." style="margin: 0">
+        <input  id="search_box" type="text" name="search_box"  placeholder="Search..." >
+        <button id="search_submit" type="submit" >Submit</button>
+    </form>
 
-            {{hotel.habitaciones}}
-
-        </option>
-
-
-
-    </datalist>
 
 
     
@@ -44,7 +45,7 @@
         
             <div class = "grid-item">  
                 <a href="{% url "login" %}" ><img class="zoom" src=/media/{{hotel.img_hotel}} style="width: 350px; height: 200px;"></a> 
-                <a href="{% url "login" %}" ><h2>{{hotel.estrellas}}</h2></a> <!--Cambiar login x la url de los hoteles-->
+                <a href="{% url "login" %}" ><h2>{{hotel.estrellas}}</h2></a> Cambiar login x la url de los hoteles
                 <br>
             </div>
         
