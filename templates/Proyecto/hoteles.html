@@ -16,7 +16,7 @@
     </div>
     <div class="habitaciones">
         {% for habitacion in h.all %}
-            <a href="{% url "login" %}"><h1>{{ habitacion.num_habitacion }}</h1></a>
+            <a href="{% url "habitaciones" habitacion.id %}"><h1>{{ habitacion.num_habitacion }}</h1></a>
             <!--Cambiar login x la url de los hoteles-->
         {% endfor %}
 

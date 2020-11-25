@@ -10,50 +10,24 @@
         <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
     </head>
 
-    <body onload="Name()">
+    <body>
 
     <div id="b">
         <br>
         <h1>Aca tiene que haber Hoteles</h1>
-
 
         <div class="grid-container">
             {% for hotel in hoteles %}
                 <div class="grid-item">
                     <a href="{% url 'hoteles' hotel.id %}"><img class="zoom"
                                                                 src=/media/{{ hotel.img_hotel }} style="width: 350px;
-                                                                height: 200px;"></a>
+                                                                height=200px"></a>
                     <a href="{% url 'hoteles' hotel.id %}"><h2>{{ hotel.nombre }}</h2></a>
                     <!--Cambiar login x la url de los hoteles-->
                 </div>
             {% endfor %}
 
         </div>
-        <datalist id="habitaciones">
-
-            <option value="Hab">
-
-                {{ hotel.habitaciones }}
-
-            </option>
-
-
-        </datalist>
-
-
-
-        {% for hotel in hotel %}
-
-            <div class="grid-item">
-                <a href="{% url "login" %}"><img class="zoom" src=/media/{{ hotel.img_hotel }} style="width: 350px;
-                                                 height: 200px;"></a>
-                <a href="{% url "login" %}"><h2>{{ hotel.estrellas }}</h2></a>
-                <!--Cambiar login x la url de los hoteles-->
-                <br>
-            </div>
-
-        {% endfor %}
-
 
         <div class="pagination">
         <span class="step-links">
@@ -82,6 +56,7 @@
 
     <button class="b1" onclick="window.location.href='page2';">Reservar</button>
     </body>
+
 {% endblock %}
 {% block branding %}
     <h1 id="site-name"><a href="{% url 'home' %}">{{ site_header|default:_('Home') }}</a></h1>
