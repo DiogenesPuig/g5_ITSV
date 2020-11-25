@@ -6,32 +6,31 @@
 {% block content %}
 
 
-	
-<head>
-    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
-</head>
 
-<body>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    </head>
 
-<div id ="b">
+    <body>
 
-
-    <h1> Hotel Hilton</h1>
-    <br> 
-    <h2 id = "hilton" > wololo </h2>
-    <p id = "hilton23" > wenas criaturitas del swñor</p>
-    <br>
-{% for hoteles in hotel%}
-    {{ hoteles.nombre }}
-{% endfor %}
-    {{ x }}
-</div> 
-
-<p id="demo">asasdafdd</p>
+    <div id="b">
 
 
+        <h1> Hotel Hilton</h1>
+        <br>
+        <h2 id="hilton"> wololo </h2>
+        <p id="hilton23"> wenas criaturitas del swñor</p>
+        <br>
+        {% for hoteles in hotel %}
+            {{ hoteles.nombre }}
+        {% endfor %}
+        {{ x }}
+    </div>
 
-<!--<script>
+    <p id="demo">asasdafdd</p>
+
+
+    <!--<script>
 var dou = {{ hotel.15 }};
 function Name() {
     var x = document.getElementById("hilton").innerHTML = dou ;
@@ -39,6 +38,6 @@ function Name() {
     }
 </script>
     <!--CAMBIAR lo de abajo DESPUES-->
-    <button class="b2" onclick="window.location.href='http://127.0.0.1:8000/';">Volver</button> 
-</body>
+    <button class="b2" onclick="window.location.href='http://127.0.0.1:8000/';">Volver</button>
+    </body>
 {% endblock %}
