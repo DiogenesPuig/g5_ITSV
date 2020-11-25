@@ -6,16 +6,16 @@
 </head>
 <body>
 
-    <form method="POST">
+<form method="POST">
     {% csrf_token %}
     {{ form.as_p }}
-        <input type="submit" >
-         {% if form.errors %}
-                    <div class="alert alert-danger" role="alert">
-                        {{form.errors}}
-                    </div>
-         {% endif %}
-    </form>
+    <input type="submit">
+    {% if form.errors %}
+        <div class="alert alert-danger" role="alert">
+            {{ form.errors }}
+        </div>
+    {% endif %}
+</form>
 
 <script>
     /* Because i didnt set placeholder values in forms.py they will be set here using vanilla Javascript
@@ -24,15 +24,15 @@
 
     //Query All input fields
     var form_fields = document.getElementsByTagName('input')
-    form_fields[1].placeholder='First name..';
-    form_fields[2].placeholder='Last name..';
-    form_fields[3].placeholder='Username..';
-    form_fields[4].placeholder='Email..';
-    form_fields[5].placeholder='Enter password...';
-    form_fields[6].placeholder='Re-enter Password...';
+    form_fields[1].placeholder = 'First name..';
+    form_fields[2].placeholder = 'Last name..';
+    form_fields[3].placeholder = 'Username..';
+    form_fields[4].placeholder = 'Email..';
+    form_fields[5].placeholder = 'Enter password...';
+    form_fields[6].placeholder = 'Re-enter Password...';
 
 
-    for (var field in form_fields){
+    for (var field in form_fields) {
         form_fields[field].className += ' form-control'
     }
 </script>
