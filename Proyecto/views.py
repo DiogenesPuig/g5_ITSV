@@ -17,6 +17,7 @@ from django.core.paginator import Paginator
 
 from .forms import CreateUserForm, UserForm
 from .models import *
+from .models import Hotel
 from django.views.generic import TemplateView
 
 # Create your views here.
@@ -26,8 +27,8 @@ class HomeView(TemplateView):
     def get(self, request, *args, **kwargs):
         context = self.get_context_data(**kwargs)
         # Creando publicaciones
-        hoteles = Hotel.objects.all()
-        paginator = Paginator(hoteles, 10)
+        hotelese = Hotel.objects.all()
+        paginator = Paginator(hotelese, 10)
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)
         """jso = []
@@ -36,7 +37,7 @@ class HomeView(TemplateView):
             jso += {hs}
         cadena = json.dumps(jso)
         print(cadena)"""
-        context['hotel'] = page_obj
+        context['hoteles'] = page_obj
         return self.render_to_response(context)
 
 """
@@ -86,3 +87,21 @@ def LogoutUser(request):
     logout(request)
     return redirect('login')
 
+def HotelesView(request,Hotel):
+    from .models import Hotel as hotel 
+    hoteles = hotel.objects.get(pk=Hotel) #Aca deberiamos llamar a las habitaciones del hotel que queremos
+    habitaciones = Habitacion.objects.all()
+    paginator = Paginator(habitaciones, 25)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    h = hoteles.habitaciones
+
+    context= {
+        'hoteles':hoteles,
+        'habitaciones':page_obj,
+        'h': h,
+    }
+    return render(request,'Proyecto/hoteles.html',context)
+
+def HabitacionView(request,Habitacion):
+    pass
