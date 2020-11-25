@@ -5,7 +5,18 @@
     <title>Title</title>
 </head>
 <body>
-    {% include 'Proyecto/ignore/nav.html' %}
+
+{% include 'Proyecto/ignore/nav.html' %}
+<br>
+<h1>{{ habitacion.num_habitacion }}</h1>
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src= "/media/{{ habitacion.img_habitacion }}" class="d-block w-100" alt="Imagen de la habitacion">
+        </div>
+    </div>
+</div>
+
     
     <h1>Hello Django</h1>
     <div class="container">    
@@ -20,5 +31,6 @@
     </div>
     <h1>{{habitacion.img_habitacion}}</h1>
     <h1>{{hotel.nombre}}</h1>
+
 </body>
 </html>

@@ -1,5 +1,5 @@
 from django.db import models
-       
+
 
 class Persona(models.Model):
     nombre = models.CharField(max_length=50)
@@ -15,7 +15,7 @@ class Cliente(Persona):
     codigo = models.CharField(max_length=20)
 
     def __str__(self):
-        return " " + str(self.nombre)     
+        return " " + str(self.nombre)
 
 class Administrador(Persona):
     codigo = models.CharField(max_length=20)
@@ -34,7 +34,7 @@ class Estado(models.Model):
     estado = models.CharField(max_length = 50,choices = status, default='Disponible')
 
     def __str__(self):
-        return " " + str(self.estado)    
+        return " " + str(self.estado)
 
 class Habitacion(models.Model):
     precio_noche = models.IntegerField()
@@ -54,13 +54,12 @@ class Habitacion(models.Model):
     img_habitacion = models.ImageField(max_length=100, default='/img_habitacion/habitacion_prueba.jpg', upload_to='img_habitacion/', blank=True, null=True)
 
 
-    
     class Meta:
         verbose_name = 'Habitacion'
         verbose_name_plural = 'Habitaciones'
-    
+
     def __str__(self):
-        return " " + str(self.num_habitacion)        
+        return " " + str(self.num_habitacion)
 
 class Hotel(models.Model):
     nombre = models.CharField(max_length=50)
@@ -74,7 +73,7 @@ class Hotel(models.Model):
         verbose_name_plural = 'Hoteles'
 
     def __str__(self):
-        return " " + str(self.nombre)       
+        return " " + str(self.nombre)
 
 #    def habs(self):
 #        strl = " "
