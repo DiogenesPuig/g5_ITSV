@@ -19,6 +19,7 @@ from .forms import CreateUserForm, UserForm
 from .models import *
 from .models import Hotel
 from django.views.generic import TemplateView
+from django.db.models import Q
 
 # Create your views here.
 class HomeView(TemplateView):
@@ -38,7 +39,29 @@ class HomeView(TemplateView):
         cadena = json.dumps(jso)
         print(cadena)"""
         context['hoteles'] = page_obj
+        query = request.GET.get('27')
+        results = Habitacion.objects.filter(Q(num_habitacion=query) | Q(estado=query)) 
+        context['results'] = results
         return self.render_to_response(context)
+
+    
+    
+    
+    
+    
+    
+    
+    
+   # def your_view(request):
+    #This could be your actual view or a new one '''
+    # Your code
+    #    if request.method == 'GET': # If the form is submitted
+
+     #       search_query = request.GET.get('search_box', None)
+        # Do whatever you need with the word the user looked for
+
+    # Your code
+    
 
 """
 def hotel(request):
@@ -107,8 +130,10 @@ def HotelesView(request,Hotel):
 def HabitacionView(request,Habitacion):
     from .models import  Habitacion as habitacion
     habitaciones = habitacion.objects.get(pk=Habitacion)
+    hotel = Hotel.objects.all()
 
     context= {
-        'habitacion':habitaciones
+        'habitacion':habitaciones,
+        'hotel': hotel
     }
     return render(request,'Proyecto/ignore/habitaciones.html',context)

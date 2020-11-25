@@ -23,10 +23,10 @@
                                                                 src=/media/{{ hotel.img_hotel }} style="width: 350px;
                                                                 height=200px"></a>
                     <a href="{% url 'hoteles' hotel.id %}"><h2>{{ hotel.nombre }}</h2></a>
+                    
                     <!--Cambiar login x la url de los hoteles-->
                 </div>
-            {% endfor %}
-
+            {% endfor %}  
         </div>
 
         <div class="pagination">

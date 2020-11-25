@@ -5,6 +5,7 @@
     <title>Title</title>
 </head>
 <body>
+
 {% include 'Proyecto/ignore/nav.html' %}
 <br>
 <h1>{{ habitacion.num_habitacion }}</h1>
@@ -15,5 +16,21 @@
         </div>
     </div>
 </div>
+
+    
+    <h1>Hello Django</h1>
+    <div class="container">    
+        <h1>Hello Django</h1>
+        <br>    
+        {% for hoteles in hotel %}    
+            <h1>{{forloop.counter}}. {{hoteles.nombre}}</h1>    
+            
+            <p>{{hoteles.content}}</p>    
+        {% endfor %}
+    
+    </div>
+    <h1>{{habitacion.img_habitacion}}</h1>
+    <h1>{{hotel.nombre}}</h1>
+
 </body>
 </html>

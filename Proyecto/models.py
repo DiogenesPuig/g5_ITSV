@@ -54,7 +54,6 @@ class Habitacion(models.Model):
     img_habitacion = models.ImageField(max_length=100, default='/img_habitacion/habitacion_prueba.jpg', upload_to='img_habitacion/', blank=True, null=True)
 
 
-
     class Meta:
         verbose_name = 'Habitacion'
         verbose_name_plural = 'Habitaciones'
