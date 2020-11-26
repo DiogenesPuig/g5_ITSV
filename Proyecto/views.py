@@ -29,7 +29,8 @@ class HomeView(TemplateView):
         context = self.get_context_data(**kwargs)
         # Creando publicaciones
         hotelese = Hotel.objects.all()
-        paginator = Paginator(hotelese, 10)
+        hotel = Hotel.objects.all()
+        paginator = Paginator(hotelese, 9)
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)
         """jso = []
@@ -38,11 +39,22 @@ class HomeView(TemplateView):
             jso += {hs}
         cadena = json.dumps(jso)
         print(cadena)"""
+        search_post = request.GET.get('search')
+        str(search_post)
+        if search_post:
+        
+            hotel = Hotel.objects.filter(Q(nombre__icontains=search_post))
+
+        else:
+
+            print("hola")    
         context['hoteles'] = page_obj
-        query = request.GET.get('27')
-        results = Habitacion.objects.filter(Q(num_habitacion=query) | Q(estado=query)) 
-        context['results'] = results
+        context['hotel'] = hotel
+
+
+
         return self.render_to_response(context)
+
 
     
     
@@ -118,12 +130,23 @@ def HotelesView(request,Hotel):
     paginator = Paginator(habitaciones, 25)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
+    habs = Habitacion.objects.all()
+    search_post = request.GET.get('search')
+    str(search_post)
+    
+    if search_post:
+        
+        habs = Habitacion.objects.filter(Q(num_habitacion__icontains=search_post))
+        str(habs)
+    else:
 
+        print("hola")
 
     context= {
         'hoteles':hoteles,
         'habitaciones':page_obj,
         'h': h,
+        'habs': habs
     }
     return render(request,'Proyecto/hoteles.html',context)
 

@@ -3,22 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    {% load staticfiles%}
+    {% load static%}
+    <link rel="stylesheet" type="text/css" href="{% static 'style_hab.css' %}">
 </head>
 <body>
 
 {% include 'Proyecto/ignore/nav.html' %}
 <br>
-<h1>{{ habitacion.num_habitacion }}</h1>
-<!--<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+<h1>Habitacion Numero: {{ habitacion.num_habitacion }}</h1>
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active">
             <img src= "/media/{{ habitacion.img_habitacion }}" class="d-block w-100" alt="Imagen de la habitacion">
         </div>
     </div>
-</div>-->
-
+</div>
+<div class="hab"> 
+    <h2>Habitacion {{habitacion.tipo_habitacion}}</h2>
+    <h2>Cantidad de Baños: {{habitacion.cant_banios}}</h2>
+    <h2>Cantidad de Dormitorios: {{habitacion.cant_dormitorios}}</h2>
+</div>
+<h2>Precio Total: ${{habitacion.precio_noche}}</h2> <button class="btnh">Reservar</button>
     
-    <h1>Hello Django</h1>
+   <!-- <h1>Hello Django</h1>
     <div class="container">    
         <h1>Hello Django</h1>
         <br>    
@@ -26,7 +34,7 @@
             {{forloop.counter}}. {{hoteles.nombre}}    
             
             {{hoteles.content}}    
-        {% endfor %}
+        {% endfor %}-->
 
 </body>
 </html>
