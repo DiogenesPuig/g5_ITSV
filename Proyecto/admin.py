@@ -33,7 +33,7 @@ class EstadoAdmin(admin.ModelAdmin):
     list_display = ('cliente', 'estado')    
 
 class HabitacionAdmin(admin.ModelAdmin):
-    list_display = ('precio_noche', 'num_habitacion', 'cant_dormitorios', 'cant_banios', 'estado', 'tipo_habitacion', 'img_habitacion')
+    list_display = ('precio_noche', 'num_habitacion', 'cant_dormitorios', 'cant_banios', 'estado', 'tipo_habitacion', 'img_habitacion','descripcion')
 
 '''
 class TipoHabitacionAdmin(admin.ModelAdmin):

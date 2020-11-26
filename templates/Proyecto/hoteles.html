@@ -3,22 +3,36 @@
 {% block content %}
     <br>
     <br>
+
     <div class=arriba>
         <div class="vista_previa">
-
         </div>
         <div class="descripcion">
             <div class="row justify-content-center">
                 <a href="{% url 'home' %}" class="ml-2"><h1> Volver a la pagina principal </h1></a>
                 <h1 style="text-align: center">Hotel {{ hoteles.nombre }}</h1>
+                {% if request.user.is_authenticated %}
+                    <h1>Hola {{ request.user }}</h1>
+                {% endif %}
             </div>
         </div>
     </div>
     <div class="habitaciones">
-        {% for habitacion in h.all %}
-            <a href="{% url "habitaciones" habitacion.id %}"><h1>{{ habitacion.num_habitacion }}</h1></a>
-            <!--Cambiar login x la url de los hoteles-->
-        {% endfor %}
+        <div style="text-align: center">
+            {% for habitacion in h.all %}
+                {% if habitacion.estado == estado %}
+                    <a href="{% url "habitaciones" habitacion.id %}">
+                    <img src="/media/{{ habitacion.img_habitacion }}"
+                         alt="Imagen de habitacion {{ habitacion.num_habitacion }}">
+                    <h1>Num Habitacion:{{ habitacion.num_habitacion }}. Cantidad de
+                        dormitorios:{{ habitacion.cant_dormitorios }}. Precio por noche:{{ habitacion.precio_noche }}.
+                        Tipo de Habitacion:{{ habitacion.tipo_habitacion }}</h1>
+                {% else %}
+                    <h1>Hola</h1>
+                {% endif %}
+            </a>
+            {% endfor %}
+        </div>
 
         <div class="pagination">
             <span class="step-links">
