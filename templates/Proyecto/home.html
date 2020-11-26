@@ -7,6 +7,7 @@
 
 
     <head>
+        <title>Hotendy</title>
         <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
     </head>
 
@@ -21,13 +22,29 @@
                 <div class="grid-item">
                     <a href="{% url 'hoteles' hotel.id %}"><img class="zoom"
                                                                 src=/media/{{ hotel.img_hotel }} style="width: 350px;
-                                                                height=200px"></a>
-                    <a href="{% url 'hoteles' hotel.id %}"><h2>{{ hotel.nombre }}</h2></a>
+                                                                height: 200px"></a>
+                    <a href="{% url 'hoteles' hotel.id %}"><h2 id="item">{{ hotel.nombre }}</h2></a>
+                    <br>
                     
                     <!--Cambiar login x la url de los hoteles-->
                 </div>
             {% endfor %}  
         </div>
+        <div class="container">    
+            <h1>Hello Django</h1>
+            <br>    
+            {% for hoteles in hotel %}    
+                {{forloop.counter}}. {{hoteles.nombre}}    
+                
+                {{hoteles.content}}    
+            {% endfor %}
+        </div>   
+        
+        <form class="form-inline my-2 my-lg-0" action="{% url "home" %}">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+
 
         <div class="pagination">
         <span class="step-links">

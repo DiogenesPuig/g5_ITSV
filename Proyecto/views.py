@@ -29,7 +29,8 @@ class HomeView(TemplateView):
         context = self.get_context_data(**kwargs)
         # Creando publicaciones
         hotelese = Hotel.objects.all()
-        paginator = Paginator(hotelese, 10)
+        hotel = Hotel.objects.all()
+        paginator = Paginator(hotelese, 9)
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)
         """jso = []
@@ -38,22 +39,22 @@ class HomeView(TemplateView):
             jso += {hs}
         cadena = json.dumps(jso)
         print(cadena)"""
+        search_post = request.GET.get('search')
+        str(search_post)
+        if search_post:
+
+            hotel = Hotel.objects.filter(Q(nombre__icontains=search_post))
+
+        else:
+
+            print("hola")
         context['hoteles'] = page_obj
+
         query = request.GET.get('27')
         results = Habitacion.objects.filter(Q(num_habitacion=query) | Q(estado=query))
         context['results'] = results
+        context['hotel'] = hotel
         return self.render_to_response(context)
-
-
-# def your_view(request):
-# This could be your actual view or a new one '''
-# Your code
-#    if request.method == 'GET': # If the form is submitted
-
-#       search_query = request.GET.get('search_box', None)
-# Do whatever you need with the word the user looked for
-
-# Your code
 
 
 """
@@ -89,7 +90,7 @@ def RegisterView(request):
         if form.is_valid():
             user = form.save()
             p = Cliente(
-                nombre= form.cleaned_data.get('first_name'),
+                nombre=form.cleaned_data.get('first_name'),
                 apellido=form.cleaned_data.get('last_name'),
                 mail=form.cleaned_data.get('email'),
                 username=form.cleaned_data.get('username')
@@ -106,7 +107,7 @@ def RegisterView(request):
 
 def LogoutUser(request):
     logout(request)
-    messages.success(request,"Has salido de tu sesion, gracias por elegirnos")
+    messages.success(request, "Has salido de tu sesion, gracias por elegirnos")
     return redirect('home')
 
 
@@ -119,13 +120,22 @@ def HotelesView(request, Hotel):
     paginator = Paginator(habitaciones, 25)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
+    habs = Habitacion.objects.all()
+    search_post = request.GET.get('search')
+    str(search_post)
 
-    context = {
-        'hoteles': hoteles,
-        'habitaciones': page_obj,
-        'estado': estado,
-        'h': h,
-    }
+    if search_post:
+
+        habs = Habitacion.objects.filter(Q(num_habitacion__icontains=search_post))
+        str(habs)
+    else:
+        context = {
+            'hoteles': hoteles,
+            'habitaciones': page_obj,
+            'estado': estado,
+            'h': h,
+            'habs': habs,
+        }
     return render(request, 'Proyecto/hoteles.html', context)
 
 
@@ -133,6 +143,16 @@ def HabitacionView(request, Habitacion):
     from .models import Habitacion as habitacion
     habitaciones = habitacion.objects.get(pk=Habitacion)
     hotel = Hotel.objects.all()
+    search_post = request.GET.get('search')
+    str(search_post)
+
+    if search_post:
+
+        hotel = Hotel.objects.filter(Q(nombre__icontains=search_post))
+
+    else:
+
+        print("hola")
 
     context = {
         'habitacion': habitaciones,
