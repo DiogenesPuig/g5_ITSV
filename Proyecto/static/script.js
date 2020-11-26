@@ -1,1 +1,4 @@
 
+function ordenar(){
+    document.write();
+}
