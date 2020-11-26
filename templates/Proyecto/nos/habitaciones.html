@@ -49,7 +49,9 @@
 <!--Hacer una autentifiacion y si esta registrado el usario que aparezca lo siguiente-->
 {% if request.user.is_authenticated %}
     <div class="Hacer reserva">
-        <button class="btn btn-outline-success" type="button">Hacer Reserva</button>
+        <form>
+            <button class="btn btn-outline-success" type="button">Hacer Reserva</button>
+        </form>
     </div>
 {% else %}
     <div class="Pedir Registro">
