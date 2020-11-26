@@ -9,13 +9,13 @@
 {% include 'Proyecto/ignore/nav.html' %}
 <br>
 <h1>{{ habitacion.num_habitacion }}</h1>
-<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+<!--<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active">
             <img src= "/media/{{ habitacion.img_habitacion }}" class="d-block w-100" alt="Imagen de la habitacion">
         </div>
     </div>
-</div>
+</div>-->
 
     
     <h1>Hello Django</h1>
@@ -23,14 +23,10 @@
         <h1>Hello Django</h1>
         <br>    
         {% for hoteles in hotel %}    
-            <h1>{{forloop.counter}}. {{hoteles.nombre}}</h1>    
+            {{forloop.counter}}. {{hoteles.nombre}}    
             
-            <p>{{hoteles.content}}</p>    
+            {{hoteles.content}}    
         {% endfor %}
-    
-    </div>
-    <h1>{{habitacion.img_habitacion}}</h1>
-    <h1>{{hotel.nombre}}</h1>
 
 </body>
 </html>

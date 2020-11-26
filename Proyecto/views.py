@@ -131,9 +131,26 @@ def HabitacionView(request,Habitacion):
     from .models import  Habitacion as habitacion
     habitaciones = habitacion.objects.get(pk=Habitacion)
     hotel = Hotel.objects.all()
+    search_post = request.GET.get('search')
+    str(search_post)
+    
+   
+
+
+    if search_post:
+        
+        hotel = Hotel.objects.filter(Q(nombre__icontains=search_post))
+
+    else:
+
+        print("hola")
+
+
 
     context= {
         'habitacion':habitaciones,
-        'hotel': hotel
+        'hotel': hotel,
     }
-    return render(request,'Proyecto/ignore/habitaciones.html',context)
+
+    
+    return render(request,'Proyecto/ignore/habitaciones.html',context,)
