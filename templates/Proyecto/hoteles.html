@@ -3,7 +3,11 @@
 {% block content %}
     <br>
     <br>
-
+    <head>
+        {% load staticfiles%}
+        {% load static%}
+        <script src="{% static 'script.js' %}"></script>
+    </head>
     <div class=arriba>
         <div class="vista_previa">
         </div>
@@ -35,9 +39,13 @@
         </div>
     </div>
 
-
-    <form class="form-inline my-2 my-lg-0" action="{% url "hoteles" hoteles.id %}">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
+    <script>
+        function mostrar(){
+            var data = "{{hotel.nombre}}";
+            alert(data)            
+        }
+    </script>
+    <form class="form-inline my-2 my-lg-0" action="{% url "hoteles" hoteles.id %}" onclick="mostrar()">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
     <div class="pagination">
