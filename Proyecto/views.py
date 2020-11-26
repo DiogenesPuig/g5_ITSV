@@ -14,12 +14,12 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.core.paginator import Paginator
 
-
 from .forms import CreateUserForm, UserForm
 from .models import *
 from .models import Hotel
 from django.views.generic import TemplateView
 from django.db.models import Q
+
 
 # Create your views here.
 class HomeView(TemplateView):
@@ -42,38 +42,20 @@ class HomeView(TemplateView):
         search_post = request.GET.get('search')
         str(search_post)
         if search_post:
-        
+
             hotel = Hotel.objects.filter(Q(nombre__icontains=search_post))
 
         else:
 
-            print("hola")    
+            print("hola")
         context['hoteles'] = page_obj
+
+        query = request.GET.get('27')
+        results = Habitacion.objects.filter(Q(num_habitacion=query) | Q(estado=query))
+        context['results'] = results
         context['hotel'] = hotel
-
-
-
         return self.render_to_response(context)
 
-
-    
-    
-    
-    
-    
-    
-    
-    
-   # def your_view(request):
-    #This could be your actual view or a new one '''
-    # Your code
-    #    if request.method == 'GET': # If the form is submitted
-
-     #       search_query = request.GET.get('search_box', None)
-        # Do whatever you need with the word the user looked for
-
-    # Your code
-    
 
 """
 def hotel(request):
@@ -101,15 +83,20 @@ def LoginView(request):
     return render(request, 'Proyecto/login.html', context)
 
 
-
 def RegisterView(request):
     form = CreateUserForm()
     if request.method == "POST":
         form = CreateUserForm(request.POST)
         if form.is_valid():
             user = form.save()
+            p = Cliente(
+                nombre=form.cleaned_data.get('first_name'),
+                apellido=form.cleaned_data.get('last_name'),
+                mail=form.cleaned_data.get('email'),
+                username=form.cleaned_data.get('username')
+            )
+            p.save()
             username = form.cleaned_data.get('username')
-
             messages.success(request, "Account was created for " + username)
             return redirect('login')
     context = {
@@ -120,11 +107,14 @@ def RegisterView(request):
 
 def LogoutUser(request):
     logout(request)
-    return redirect('login')
+    messages.success(request, "Has salido de tu sesion, gracias por elegirnos")
+    return redirect('home')
 
-def HotelesView(request,Hotel):
-    from .models import Hotel as hotel 
-    hoteles = hotel.objects.get(pk=Hotel) #Aca deberiamos llamar a las habitaciones del hotel que queremos
+
+def HotelesView(request, Hotel):
+    from .models import Hotel as hotel
+    estado = Estado.objects.get(id=1)
+    hoteles = hotel.objects.get(pk=Hotel)  # Aca deberiamos llamar a las habitaciones del hotel que queremos
     habitaciones = Habitacion.objects.all()
     h = hoteles.habitaciones
     paginator = Paginator(habitaciones, 25)
@@ -133,47 +123,39 @@ def HotelesView(request,Hotel):
     habs = Habitacion.objects.all()
     search_post = request.GET.get('search')
     str(search_post)
-    
+
     if search_post:
-        
+
         habs = Habitacion.objects.filter(Q(num_habitacion__icontains=search_post))
         str(habs)
     else:
+        context = {
+            'hoteles': hoteles,
+            'habitaciones': page_obj,
+            'estado': estado,
+            'h': h,
+            'habs': habs,
+        }
+    return render(request, 'Proyecto/hoteles.html', context)
 
-        print("hola")
 
-    context= {
-        'hoteles':hoteles,
-        'habitaciones':page_obj,
-        'h': h,
-        'habs': habs
-    }
-    return render(request,'Proyecto/hoteles.html',context)
-
-def HabitacionView(request,Habitacion):
-    from .models import  Habitacion as habitacion
+def HabitacionView(request, Habitacion):
+    from .models import Habitacion as habitacion
     habitaciones = habitacion.objects.get(pk=Habitacion)
     hotel = Hotel.objects.all()
     search_post = request.GET.get('search')
     str(search_post)
-    
-   
-
 
     if search_post:
-        
+
         hotel = Hotel.objects.filter(Q(nombre__icontains=search_post))
 
     else:
 
         print("hola")
 
-
-
-    context= {
-        'habitacion':habitaciones,
-        'hotel': hotel,
+    context = {
+        'habitacion': habitaciones,
+        'hotel': hotel
     }
-
-    
-    return render(request,'Proyecto/ignore/habitaciones.html',context,)
+    return render(request, 'Proyecto/nos/habitaciones.html', context)

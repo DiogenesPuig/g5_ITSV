@@ -4,8 +4,8 @@ from django.db import models
 class Persona(models.Model):
     nombre = models.CharField(max_length=50)
     apellido = models.CharField(max_length=50)
-    mail = models.CharField(max_length=100)
-    telefono = models.CharField(max_length=12)
+    mail = models.EmailField(max_length=100)
+    telefono = models.CharField(max_length=12, default="Sin Numero")
 
     class Meta:
         verbose_name = "Persona"
@@ -13,6 +13,7 @@ class Persona(models.Model):
 
 class Cliente(Persona):
     codigo = models.CharField(max_length=20)
+    username =models.CharField(max_length=30,default="")
 
     def __str__(self):
         return " " + str(self.nombre)
@@ -38,6 +39,7 @@ class Estado(models.Model):
 
 class Habitacion(models.Model):
     precio_noche = models.IntegerField()
+    descripcion = models.TextField(max_length=500, default="Descripcion estandar")
     num_habitacion = models.CharField(max_length= 5)
     cant_dormitorios = models.IntegerField()
     cant_banios = models.IntegerField()
