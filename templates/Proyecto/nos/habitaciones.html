@@ -51,30 +51,16 @@
 <!--Hacer una autentifiacion y si esta registrado el usario que aparezca lo siguiente-->
 {% if request.user.is_authenticated %}
     <div class="Hacer reserva">
-        <form>
-            <button class="btn btn-outline-success" type="button">Hacer Reserva</button>
-        </form>
+        <a type="Summy" href={% url "reservar" habitacion.id %}>Reservar</a>
     </div>
 {% else %}
     <div class="Pedir Registro">
-
+        <form action="{% url "login" %}">
+            <label>Para hacer una reserva necesita estar registrado</label><br>
+            <button class="btn btn-outline-success"> Login</button>
+        </form>
     </div>
 {% endif %}
-<!--
-<h1>Hello Django</h1>
-<div class="container">
-    <h1>Hello Django</h1>
-    <br>
-    {% for hoteles in hotel %}
-        <h1>{{ forloop.counter }}. {{ hoteles.nombre }}</h1>
-
-        <p>{{ hoteles.content }}</p>
-    {% endfor %}
-
-</div>
-<h1>{{ habitacion.img_habitacion }}</h1>
-<h1>{{ hotel.nombre }}</h1>
--->
 
 </body>
 </html>

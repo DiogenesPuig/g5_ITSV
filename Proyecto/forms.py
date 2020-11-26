@@ -5,6 +5,10 @@ from django import forms
 from django.contrib.auth.models import User
 from django.http import request
 
+class AlgoForm(ModelForm):
+    class Meta:
+        model = Habitacion
+        fields = ['estado']
 
 class UserForm(ModelForm):
     # last_name = forms.CharField(blank=False)
