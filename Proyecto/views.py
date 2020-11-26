@@ -6,15 +6,15 @@ import json
 from django.shortcuts import render, redirect
 from django.core.exceptions import PermissionDenied
 from django.http import Http404
-from django.http import HttpResponse, JsonResponse
-from django.urls import path
+from django.http import HttpResponseRedirect, JsonResponse
+from django.urls import path, reverse
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.core.paginator import Paginator
 
-from .forms import CreateUserForm, UserForm
+from .forms import CreateUserForm, UserForm, AlgoForm
 from .models import *
 from .models import Hotel
 from django.views.generic import TemplateView
@@ -42,28 +42,17 @@ class HomeView(TemplateView):
         search_post = request.GET.get('search')
         str(search_post)
         if search_post:
-
             hotel = Hotel.objects.filter(Q(nombre__icontains=search_post))
-
         else:
+            pass
 
-            print("hola")
         context['hoteles'] = page_obj
 
         query = request.GET.get('27')
-        results = Habitacion.objects.filter(Q(num_habitacion=query) | Q(estado=query))
+        results = Habitacion.objects.filter(Q(num_habitacion=query))
         context['results'] = results
         context['hotel'] = hotel
         return self.render_to_response(context)
-
-
-"""
-def hotel(request):
-    hotel = Hotel.objects.get(id=1)
-    return render(request, 'Proyecto/home.html',
-                  {'name': request.user, 'hotel': hotel.nombre, 'estrellas': hotel.estrellas,
-                   'direccion': hotel.direccion})
-"""
 
 
 def LoginView(request):
@@ -113,7 +102,6 @@ def LogoutUser(request):
 
 def HotelesView(request, Hotel):
     from .models import Hotel as hotel
-    estado = Estado.objects.get(id=1)
     hoteles = hotel.objects.get(pk=Hotel)  # Aca deberiamos llamar a las habitaciones del hotel que queremos
     order_by = request.GET.get('order_by')
     habitaciones = Habitacion.objects.all().order_by(order_by)
@@ -124,16 +112,13 @@ def HotelesView(request, Hotel):
     habs = Habitacion.objects.all()
     search_post = request.GET.get('search')
     str(search_post)
-
     if search_post:
-
         habs = Habitacion.objects.filter(Q(num_habitacion__icontains=search_post))
         str(habs)
     else:
         context = {
             'hoteles': hoteles,
             'habitaciones': page_obj,
-            'estado': estado,
             'h': h,
             'habs': habs,
         }
@@ -147,17 +132,34 @@ def HabitacionView(request, Habitacion):
     hotel = Hotel.objects.all()
     search_post = request.GET.get('search')
     str(search_post)
-
     if search_post:
-
         hotel = Hotel.objects.filter(Q(nombre__icontains=search_post))
-
     else:
-
-        print("hola")
+        pass
 
     context = {
         'habitacion': habitaciones,
-        'hotel': hotel
+        'hotel': hotel,
     }
     return render(request, 'Proyecto/nos/habitaciones.html', context)
+
+
+def hacerReserva(request, Habitacion):
+    from .models import Habitacion as habitacion
+    habi = habitacion.objects.get(pk=Habitacion)
+    if request.user.is_authenticated:
+        #Habitacion.estado = "Ocupado"
+        #Habitacion.save()
+        cliente = Cliente.objects.get(username=request.user.username)
+        cliente.reservas.add(habi)
+        cliente.save()
+        cam = habitacion.objects.get(id=Habitacion)
+        cam.estado = "Ocupado"
+        cam.save()
+        messages.success(request, "Tu reserva fue sido realizada con exito")
+        return redirect('home')
+    else:
+        messages.error(request,"Tienes que estar logeado para hacer una reserva")
+        return redirect('login')
+
+    return redirect('home')

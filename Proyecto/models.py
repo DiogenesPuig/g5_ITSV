@@ -11,31 +11,6 @@ class Persona(models.Model):
         verbose_name = "Persona"
         verbose_name_plural = "Personas"
 
-class Cliente(Persona):
-    codigo = models.CharField(max_length=20)
-    username =models.CharField(max_length=30,default="")
-
-    def __str__(self):
-        return " " + str(self.nombre)
-
-class Administrador(Persona):
-    codigo = models.CharField(max_length=20)
-
-    class Meta:
-        verbose_name = 'Administrador'
-        verbose_name_plural = 'Administradores'
-
-
-class Estado(models.Model):
-    cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
-    status=[
-    ('Disponible','D'),
-    ('Ocupado','O'),
-    ]
-    estado = models.CharField(max_length = 50,choices = status, default='Disponible')
-
-    def __str__(self):
-        return " " + str(self.estado)
 
 class Habitacion(models.Model):
     precio_noche = models.IntegerField()
@@ -43,7 +18,11 @@ class Habitacion(models.Model):
     num_habitacion = models.CharField(max_length= 5)
     cant_dormitorios = models.IntegerField()
     cant_banios = models.IntegerField()
-    estado = models.ForeignKey(Estado, on_delete=models.CASCADE,default=None)
+    status_estado = [
+        ('Disponible', 'D'),
+        ('Ocupado', 'O'),
+    ]
+    estado = models.CharField(max_length=50, choices=status_estado, default='Disponible')
     status=[
     ('Suite', 'Suite'),
     ('Matrimonial', 'Matrimonial'),
@@ -77,16 +56,19 @@ class Hotel(models.Model):
     def __str__(self):
         return " " + str(self.nombre)
 
-#    def habs(self):
-#        strl = " "
-#
-#        for ele in self.habitaciones:
-#            strl += " " + ele
-#
-#        return strl
-#
-#    habs.habitaciones = True 
 
+class Cliente(Persona):
+    codigo = models.CharField(max_length=20)
+    username =models.CharField(max_length=30,default="")
+    reservas = models.ManyToManyField(Habitacion,default=None, blank= True)
 
+    def __str__(self):
+        return str(self.nombre)
 
-# Create your models here.
+class Administrador(Persona):
+    codigo = models.CharField(max_length=20)
+
+    class Meta:
+        verbose_name = 'Administrador'
+        verbose_name_plural = 'Administradores'
+

@@ -24,7 +24,7 @@
     <div class="habitaciones">
         <div style="text-align: center">
             {% for habitacion in h.all %}
-                {% if habitacion.estado == estado %}
+                {% if habitacion.estado == "Disponible" %}
                     <a href="{% url "habitaciones" habitacion.id %}">
                     <img src="/media/{{ habitacion.img_habitacion }}"
                          alt="Imagen de habitacion {{ habitacion.num_habitacion }}">
