@@ -1,7 +1,8 @@
 {% extends "admin/base_site.html" %}
 {% load staticfiles %}
 
-{% block breadcrumbs %}{% endblock %}
+{% block breadcrumbs %}
+{% endblock %}
 
 {% block content %}
 
@@ -15,8 +16,6 @@
 
     <div id="b">
         <br>
-        <h1>Aca tiene que haber Hoteles</h1>
-
         <div class="grid-container">
             {% for hotel in hoteles %}
                 <div class="grid-item">
@@ -25,12 +24,14 @@
                                                                 height: 200px"></a>
                     <a href="{% url 'hoteles' hotel.id %}"><h2 id="item">{{ hotel.nombre }}</h2></a>
                     <br>
-                    
+
                     <!--Cambiar login x la url de los hoteles-->
                 </div>
-            {% endfor %}  
+            {% endfor %}
         </div>
-        <div class="container">    
+
+        <!--<div class="container">
+
             <h1>Hello Django</h1>
             <br>    
             {% for hoteles in hotel %}    
@@ -38,8 +39,8 @@
                 
                 {{hoteles.content}}    
             {% endfor %}
-        </div>   
-        
+        </div>   -->
+
         <form class="form-inline my-2 my-lg-0" action="{% url "home" %}">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
@@ -78,5 +79,7 @@
 {% block branding %}
     <h1 id="site-name"><a href="{% url 'home' %}">{{ site_header|default:_('Home') }}</a></h1>
 {% endblock %}
+
+{% block title %}Hotendy{% endblock %}
 
 
