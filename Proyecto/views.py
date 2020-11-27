@@ -103,8 +103,7 @@ def LogoutUser(request):
 def HotelesView(request, Hotel):
     from .models import Hotel as hotel
     hoteles = hotel.objects.get(pk=Hotel)  # Aca deberiamos llamar a las habitaciones del hotel que queremos
-    order_by = request.GET.get('order_by')
-    habitaciones = Habitacion.objects.all().order_by(order_by)
+    habitaciones = Habitacion.objects.all()
     h = hoteles.habitaciones
     paginator = Paginator(habitaciones, 25)
     page_number = request.GET.get('page')
@@ -121,9 +120,8 @@ def HotelesView(request, Hotel):
             'habitaciones': page_obj,
             'h': h,
             'habs': habs,
-        }
-    ordering = ['-cant_dormitorios']    
-    return render(request, 'Proyecto/hoteles.html', context, ordering)
+        }  
+    return render(request, 'Proyecto/hoteles.html', context)
 
 
 def HabitacionView(request, Habitacion):

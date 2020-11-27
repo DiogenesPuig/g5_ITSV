@@ -1,0 +1,21 @@
+.body{
+    background-color:  rgb(188, 229, 255);
+}
+
+.img{
+    size: 10cm;
+    border-radius: 2.5%;
+}
+.texto{
+    text-align: justify;
+}
+.habitaciones{
+    margin-left: 100px;
+}
+
+#hotel_nombre{
+    size: 120px;
+}
+.table{
+    background-color: transparent;
+}
