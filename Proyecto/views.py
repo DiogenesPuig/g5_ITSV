@@ -160,6 +160,7 @@ def hacerReserva(request, Habitacion):
 def deshacerReserva(request):
     if request.user.is_authenticated:
         if request.user.username == 'admin':
+
             messages.error(request,"no puedes acceder a esta pagina")
             return redirect('home')
         else:

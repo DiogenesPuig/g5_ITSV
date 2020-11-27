@@ -1,4 +1,4 @@
-.body{
+body{
     background-color:  rgb(188, 229, 255);
 }
 
@@ -14,8 +14,22 @@
 }
 
 #hotel_nombre{
-    size: 120px;
+    font-size: 80px;
+    font-style: oblique;
+    text-transform: uppercase;
 }
 .table{
     background-color: transparent;
+}
+.botn{
+    margin-left: 1280px;
+    border-style: dashed; 
+    size: 180px;
+}
+
+#hola{
+    text-transform: capitalize;
+}
+.pags{
+    text-align: center;
 }
