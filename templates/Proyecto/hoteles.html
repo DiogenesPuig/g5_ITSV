@@ -3,11 +3,7 @@
 {% block content %}
     <br>
     <br>
-    <head>
-        {% load staticfiles%}
-        {% load static%}
-        <script src="{% static 'script.js' %}"></script>
-    </head>
+
     <div class=arriba>
         <div class="vista_previa">
         </div>
@@ -24,28 +20,25 @@
     <div class="habitaciones">
         <div style="text-align: center">
             {% for habitacion in h.all %}
-                {% if habitacion.estado == "Disponible" %}
-                    <a href="{% url "habitaciones" habitacion.id %}">
-                    <img src="/media/{{ habitacion.img_habitacion }}"
-                         alt="Imagen de habitacion {{ habitacion.num_habitacion }}">
-                    <h1>Num Habitacion:{{ habitacion.num_habitacion }}. Cantidad de
-                        dormitorios:{{ habitacion.cant_dormitorios }}. Precio por noche:{{ habitacion.precio_noche }}.
-                        Tipo de Habitacion:{{ habitacion.tipo_habitacion }}</h1>
-                {% else %}
-                    <h1>Hola</h1>
-                {% endif %}
-            </a>
+                    {% if habitacion.estado == "Disponible" %}
+                        <a href="{% url "habitaciones" habitacion.id %}">
+                        <img src="/media/{{ habitacion.img_habitacion }}"
+                             alt="Imagen de habitacion {{ habitacion.num_habitacion }}">
+                        <h1>Num Habitacion:{{ habitacion.num_habitacion }}. Cantidad de
+                            dormitorios:{{ habitacion.cant_dormitorios }}. Precio por
+                            noche:{{ habitacion.precio_noche }}.
+                            Tipo de Habitacion:{{ habitacion.tipo_habitacion }}</h1>
+                    {% else %}
+                        <h1>Hola</h1>
+                    {% endif %}
+                </a>
             {% endfor %}
         </div>
     </div>
 
-    <script>
-        function mostrar(){
-            var data = "{{hotel.nombre}}";
-            alert(data)            
-        }
-    </script>
-    <form class="form-inline my-2 my-lg-0" action="{% url "hoteles" hoteles.id %}" onclick="mostrar()">
+
+    <form class="form-inline my-2 my-lg-0" action="{% url "hoteles" hoteles.id %}">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
     <div class="pagination">

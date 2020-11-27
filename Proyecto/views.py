@@ -103,10 +103,9 @@ def LogoutUser(request):
 def HotelesView(request, Hotel):
     from .models import Hotel as hotel
     hoteles = hotel.objects.get(pk=Hotel)  # Aca deberiamos llamar a las habitaciones del hotel que queremos
-    order_by = request.GET.get('order_by')
-    habitaciones = Habitacion.objects.all().order_by(order_by)
+    habitaciones = Habitacion.objects.all()
     h = hoteles.habitaciones
-    paginator = Paginator(habitaciones, 25)
+    paginator = Paginator(habitaciones, 10)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     habs = Habitacion.objects.all()
@@ -116,14 +115,26 @@ def HotelesView(request, Hotel):
         habs = Habitacion.objects.filter(Q(num_habitacion__icontains=search_post))
         str(habs)
     else:
+        pass
+    
+    if request.user.is_authenticated:
+        clie = Cliente.objects.get(username=request.user.username)
+        reservas_cliente = clie.reservas
+        context = {
+            'hoteles': hoteles,
+            'habitaciones': page_obj,
+            'h': h,
+            'habs': habs,
+            'cliente':reservas_cliente,
+        }
+    else:
         context = {
             'hoteles': hoteles,
             'habitaciones': page_obj,
             'h': h,
             'habs': habs,
         }
-    ordering = ['-cant_dormitorios']    
-    return render(request, 'Proyecto/hoteles.html', context, ordering)
+    return render(request, 'Proyecto/hoteles.html', context)
 
 
 def HabitacionView(request, Habitacion):
@@ -148,8 +159,8 @@ def hacerReserva(request, Habitacion):
     from .models import Habitacion as habitacion
     habi = habitacion.objects.get(pk=Habitacion)
     if request.user.is_authenticated:
-        #Habitacion.estado = "Ocupado"
-        #Habitacion.save()
+        # Habitacion.estado = "Ocupado"
+        # Habitacion.save()
         cliente = Cliente.objects.get(username=request.user.username)
         cliente.reservas.add(habi)
         cliente.save()
@@ -159,7 +170,11 @@ def hacerReserva(request, Habitacion):
         messages.success(request, "Tu reserva fue sido realizada con exito")
         return redirect('home')
     else:
-        messages.error(request,"Tienes que estar logeado para hacer una reserva")
+        messages.error(request, "Tienes que estar logeado para hacer una reserva")
         return redirect('login')
 
     return redirect('home')
+
+
+def deshacerReserva(request):
+    pass
