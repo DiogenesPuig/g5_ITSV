@@ -135,15 +135,4 @@ STATICFILES_DIRS = (
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR + '/media/'
-"""
-JET_SIDE_MENU_ITEMS = [
-    {
-        'label': 'Test',
-        'items': [
-            {
-                'name': 'Proyecto.cliente',
-            },
-        ]
-    },
-]
-"""
+
