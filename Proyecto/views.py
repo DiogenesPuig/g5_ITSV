@@ -160,8 +160,8 @@ def hacerReserva(request, Habitacion):
 def deshacerReserva(request):
     if request.user.is_authenticated:
         if request.user.username == 'admin':
-            print(
-                'amigo sos admin, como admin no podes deshacer una reserva, porque no podes hacer reservas de  por si')
+            print('amigo sos admin, como admin no podes deshacer una reserva, porque no podes hacer reservas de  por si')
+            return redirect('home')
         else:
             cliente = Cliente.objects.get(username=request.user.username)
             habitaciones = cliente.reservas.all()
