@@ -29,24 +29,10 @@
                 </div>
             {% endfor %}
         </div>
-
-        <!--<div class="container">
-
-            <h1>Hello Django</h1>
-            <br>    
-            {% for hoteles in hotel %}    
-                {{forloop.counter}}. {{hoteles.nombre}}    
-                
-                {{hoteles.content}}    
-            {% endfor %}
-        </div>   -->
-
         <form class="form-inline my-2 my-lg-0" action="{% url "home" %}">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
-
-
         <div class="pagination">
         <span class="step-links">
             {% if hoteles.has_previous %}

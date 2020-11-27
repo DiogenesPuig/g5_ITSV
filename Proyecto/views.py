@@ -116,6 +116,7 @@ def HotelesView(request, Hotel):
         'h': h,
         'habs': habs,
     }
+
     return render(request, 'Proyecto/hoteles.html', context)
 
 
