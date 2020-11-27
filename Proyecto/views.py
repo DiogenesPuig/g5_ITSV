@@ -20,6 +20,16 @@ from .models import Hotel
 from django.views.generic import TemplateView
 from django.db.models import Q
 
+def Pruebas(request):
+    h = Hotel.objects.all()
+    paginator = Paginator(h, 10)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    context = {
+        'hoteles': page_obj,
+        'hoteles2': h,
+    }
+    return render(request,"Proyecto/home2.html",context)
 
 # Create your views here.
 class HomeView(TemplateView):

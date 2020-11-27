@@ -5,6 +5,7 @@ from Proyecto.views import *
 
 urlpatterns = [
     path('', HomeView.as_view(), name='home'),
+    path('prueba',Pruebas,name="prubas"),
     path('login', LoginView, name='login'),
     path('register', RegisterView,name='register'),
     path('logout',LogoutUser,name="logout"),
