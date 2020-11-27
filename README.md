@@ -5,8 +5,8 @@
 ## Objetivo
 Hacer una pagina web en la cual un cliente puede hacer reservas de habitaciones de "X" hotel
 
-## Diagramas:
-### Caso de Uso:
-![Imagen que describe los casos de uso del proyecto](https://github.com/DiogenesPuig/g5_ITSV/blob/main/docs/CasodeUso.png)
-### Diagrama de Clases:
-![Imagen que describe diagrama de clases del proyecto](https://github.com/DiogenesPuig/g5_ITSV/blob/main/docs/DiagramaDeClases.png)
+## Descripcion
+Página de hotelería dinámica con un sistema de reserva por usuarios; en la cual se pueden definir diversos hoteles y habitaciones con el fin de que los usuarios logren acceder a dichos elementos y poder hacer reservas. 
+
+
+
