@@ -8,7 +8,7 @@
           integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{% static 'style_hab.css' %}">
 </head>
-
+<body>
 
 {% include 'Proyecto/nos/nav.html' %}
 <br>
@@ -49,10 +49,12 @@
     </div>
 </div>
 <!--Hacer una autentifiacion y si esta registrado el usario que aparezca lo siguiente-->
-{% if request.user.is_authenticated %}
+{% if request.user.is_authenticated and habitacion.estado == "Disponible" %}
     <div class="Hacer reserva">
-        <a type="Summy" href={% url "reservar" habitacion.id %}>Reservar</a>
+        <a type="Summy" href={% url "reservar" habitacion.id %}><button class="btn btn-outline-success my-2 my-sm-0">Reservar</button></a>
     </div>
+    {% elif request.user.is_authenticated and habitacion.estado == "Ocupado" %}
+        <a type="Summy" href={% url "eliminar_reserva" habitacion.id %}><button class="btn btn-outline-success my-2 my-sm-0">Eliminar Reserva</button></a>
 {% else %}
     <div class="Pedir Registro">
         <form action="{% url "login" %}">

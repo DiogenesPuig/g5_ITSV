@@ -10,6 +10,7 @@ urlpatterns = [
     path('logout',LogoutUser,name="logout"),
     path('hoteles/<str:Hotel>/',HotelesView,name="hoteles"),
     path('habitacion/<str:Habitacion>/',HabitacionView,name='habitaciones'),
-    path('reservar/<str:Habitacion>/',hacerReserva,name='reservar')
-
+    path('reservar/<str:Habitacion>/',hacerReserva,name='reservar'),
+    path('deshacerReserva',deshacerReserva,name="deshacer_reserva"),
+    path('elimnarrRserva/<str:Habitacion>',eliminarReserva,name='eliminar_reserva'),
 ]
