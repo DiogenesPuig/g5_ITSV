@@ -5,26 +5,28 @@
         {% for habitacion in h.all %}
             <div class="row padding">
                 <div class="col-lg-1"></div>
-                <div class="row padding col-lg-10 rounded bg-light text-dark border">
-                    <div class="col">
-                        <h1>{{ habitacion.num_habitacion }}</h1>
-                        <p>texto aleatorio PD: podriamos hacer esto en cada hotel?</p>
-                        <a href="{% url "habitaciones" habitacion.id %}">
-                            <button class="btn btn-primary btn-lg">Ver Habitacion</button>
-                        </a>
+                {% if habitacion.estado == "Disponible" %}
+                    <div class="row padding col-lg-10 rounded bg-light text-dark border">
+                        <div class="col">
+                            <h1>{{ habitacion.num_habitacion }}</h1>
+                            <p>texto aleatorio PD: podriamos hacer esto en cada hotel?</p>
+                            <a href="{% url "habitaciones" habitacion.id %}">
+                                <button class="btn btn-primary btn-lg">Ver Habitacion</button>
+                            </a>
+                        </div>
+                        <div class="col">
+                            <img src=/media/{{ habitacion.img_habitacion }} class="img-fluid">
+                        </div>
                     </div>
-                    <div class="col">
-
-                        <img src=/media/{{ habitacion.img_habitacion }} class="img-fluid">
-
-                    </div>
-                </div>
+                {% else %}
+                    <div class="row padding col-lg-10 rounded"></div>
+                {% endif %}
                 <div class="col-lg-1"></div>
             </div>
             <br>
 
         {% endfor %}
-        <nav aria-label="Page navigation example">
+        <nav aria-label="">
             <ul class="pagination justify-content-center">
                 {% if habitaciones.has_previous %}
                     <li class="page-item">
@@ -58,4 +60,16 @@
             </ul>
         </nav>
     </div>
+{% endblock %}
+{% block footer %}
+    <footer>
+        <div class="container-fluid padding">
+            <div class="row text-center">
+                <div class="col-12">
+                    <hr class="light">
+                    <h2>&copy; Hontendy.com</h2>
+                </div>
+            </div>
+        </div>
+    </footer>
 {% endblock %}

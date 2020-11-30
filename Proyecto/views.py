@@ -81,12 +81,9 @@ def HotelesView2(request, Hotel):
     hoteles = hotel.objects.get(pk=Hotel)  # Aca deberiamos llamar a las habitaciones del hotel que queremos
     habitaciones = Habitacion.objects.all()
     h = hoteles.habitaciones
-    paginator = Paginator(habitaciones, 10)
+    paginator = Paginator(habitaciones, 9)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-    habs = Habitacion.objects.all()
-    search_post = request.GET.get('search')
-    str(search_post)
 
     context = {
         'hoteles': hoteles,
