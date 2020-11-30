@@ -79,9 +79,8 @@ def LogoutUser(request):
 def HotelesView2(request, Hotel):
     from .models import Hotel as hotel
     hoteles = hotel.objects.get(pk=Hotel)  # Aca deberiamos llamar a las habitaciones del hotel que queremos
-    habitaciones = Habitacion.objects.all()
-    h = hoteles.habitaciones
-    paginator = Paginator(habitaciones, 9)
+    h = hoteles.habitaciones.all() #Tomamos SOLO las habitaciones del hotel para hacer el pagination
+    paginator = Paginator(h, 9)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 

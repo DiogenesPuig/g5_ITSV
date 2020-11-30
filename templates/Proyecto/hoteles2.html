@@ -2,7 +2,7 @@
 
 {% block content %}
     <div class="container-fluid padding">
-        {% for habitacion in h.all %}
+        {% for habitacion in habitaciones %}
             <div class="row padding">
                 <div class="col-lg-1"></div>
                 {% if habitacion.estado == "Disponible" %}
