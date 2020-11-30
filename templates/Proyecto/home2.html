@@ -69,20 +69,22 @@
     <div class="container-fluid padding">
         {% for hotel in hoteles %}
             <div class="row padding">
-                <div class="col-md-2 col-lg-1"></div>
-                <div class="col-md-4 col-lg-5">
-                    <h1>{{ hotel.nombre }}</h1>
-                    <p>texto aleatorio PD: podriamos hacer esto en cada hotel?</p>
-                    <a href="">
-                        <button class="btn btn-primary btn-lg">Ver Habitaciones Disponibles</button>
-                    </a>
+                <div class="col-lg-1"></div>
+                <div class="row padding col-lg-10 rounded bg-light text-dark border" >
+                    <div class="col">
+                        <h1>{{ hotel.nombre }}</h1>
+                        <p>texto aleatorio PD: podriamos hacer esto en cada hotel?</p>
+                        <a href="">
+                            <button class="btn btn-primary btn-lg">Ver Habitaciones Disponibles</button>
+                        </a>
+                    </div>
+                    <div class="col">
+                        <!-- -->
+                        <img src=/media/{{ hotel.img_hotel }} class="img-fluid">
+                        <!-- -->
+                    </div>
                 </div>
-                <div class="col-md-4 col-lg-5">
-                    <!-- -->
-                    <img src=/media/{{ hotel.img_hotel }} class="img-fluid">
-                    <!-- -->
-                </div>
-                <div class="col-md-2 col-lg-1"></div>
+                <div class="col-lg-1"></div>
             </div>
             <br>
         {% endfor %}
