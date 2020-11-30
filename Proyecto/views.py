@@ -20,6 +20,7 @@ from .models import Hotel
 from django.views.generic import TemplateView
 from django.db.models import Q
 
+# Create your views here.
 def Pruebas(request):
     h = Hotel.objects.all()
     paginator = Paginator(h, 10)
@@ -30,33 +31,6 @@ def Pruebas(request):
         'hoteles2': h,
     }
     return render(request,"Proyecto/home2.html",context)
-
-# Create your views here.
-class HomeView(TemplateView):
-    template_name = 'Proyecto/home.html'
-
-    def get(self, request, *args, **kwargs):
-        context = self.get_context_data(**kwargs)
-        # Creando publicaciones
-        hotelese = Hotel.objects.all()
-        hotel = Hotel.objects.all()
-        paginator = Paginator(hotelese, 9)
-        page_number = request.GET.get('page')
-        page_obj = paginator.get_page(page_number)
-        search_post = request.GET.get('search')
-        str(search_post)
-        if search_post:
-            hotel = Hotel.objects.filter(Q(nombre__icontains=search_post))
-        else:
-            pass
-
-        context['hoteles'] = page_obj
-        query = request.GET.get('27')
-        results = Habitacion.objects.filter(Q(num_habitacion=query))
-        context['results'] = results
-        context['hotel'] = hotel
-        return self.render_to_response(context)
-
 
 def LoginView(request):
     context = {}
@@ -122,32 +96,6 @@ def HotelesView2(request, Hotel):
     }
     return render(request, 'Proyecto/hoteles2.html', context)
 
-def HotelesView(request, Hotel):
-    from .models import Hotel as hotel
-    hoteles = hotel.objects.get(pk=Hotel)  # Aca deberiamos llamar a las habitaciones del hotel que queremos
-    habitaciones = Habitacion.objects.all()
-    h = hoteles.habitaciones
-    paginator = Paginator(habitaciones, 10)
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
-    habs = Habitacion.objects.all()
-    search_post = request.GET.get('search')
-    str(search_post)
-    if search_post:
-        habs = Habitacion.objects.filter(Q(num_habitacion__icontains=search_post))
-        str(habs)
-    else:
-        pass
-
-    context = {
-        'hoteles': hoteles,
-        'habitaciones': page_obj,
-        'h': h,
-        'habs': habs,
-    }
-
-    return render(request, 'Proyecto/hoteles.html', context)
-
 
 def HabitacionView(request, Habitacion):
     from .models import Habitacion as habitacion
@@ -164,7 +112,7 @@ def HabitacionView(request, Habitacion):
         'habitacion': habitaciones,
         'hotel': hotel,
     }
-    return render(request, 'Proyecto/nos/habitaciones.html', context)
+    return render(request, 'Proyecto/habitaciones.html', context)
 
 
 def hacerReserva(request, Habitacion):
@@ -202,13 +150,13 @@ def deshacerReserva(request):
                 'cliente': cliente,
                 'reserva':page_obj
             }
-            return render(request, "Proyecto/nos/eliminarReserva.html", context)
+            return render(request, "Proyecto/eliminarReserva.html", context)
     else:
         cliente = Cliente.objects.get(id=1)
         context = {
             'cliente': cliente
         }
-        return render(request, "Proyecto/nos/eliminarReserva.html", context)
+        return render(request, "Proyecto/eliminarReserva.html", context)
 
 def eliminarReserva(request, Habitacion):
     from .models import Habitacion as habitacion

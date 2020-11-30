@@ -4,13 +4,11 @@ from Proyecto.views import *
 
 
 urlpatterns = [
-    path('', HomeView.as_view(), name='home'),
-    path('prueba',Pruebas,name="prubas"),
-    path('hoteles2/<str:Hotel>/',HotelesView2,name="hoteles2"),
+    path('',Pruebas,name="home"),
+    path('hoteles/<str:Hotel>/',HotelesView2,name="hoteles"),
     path('login', LoginView, name='login'),
     path('register', RegisterView,name='register'),
     path('logout',LogoutUser,name="logout"),
-    path('hoteles/<str:Hotel>/',HotelesView,name="hoteles"),
     path('habitacion/<str:Habitacion>/',HabitacionView,name='habitaciones'),
     path('reservar/<str:Habitacion>/',hacerReserva,name='reservar'),
     path('deshacerReserva',deshacerReserva,name="deshacer_reserva"),
