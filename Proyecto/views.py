@@ -22,7 +22,13 @@ from django.db.models import Q
 
 # Create your views here.
 def Pruebas(request):
+    queryset = request.GET.get("buscar")
     h = Hotel.objects.all()
+    if queryset:
+        h = Hotel.objects.filter(
+            Q(nombre__icontains = queryset) |
+            Q(direccion__icontains = queryset)
+        ).distinct()
     paginator = Paginator(h, 10)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)

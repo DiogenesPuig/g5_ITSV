@@ -93,7 +93,7 @@
             <ul class="pagination justify-content-center">
                 {% if hoteles.has_previous %}
                     <li class="page-item">
-                        <a class="page-link" href="?page={{ hoteles.previous_page_number }}">Previous</a>
+                        <a class="page-link" href="?page={{ hoteles.previous_page_number }}{% if request.GET.search %}&q={{ request.GET.search }}{% endif %}">Previous</a>
                     </li>
                 {% else %}
                     <li class="page-item disabled">
@@ -113,7 +113,7 @@
                 {% endfor %}
                 {% if hoteles.has_next %}
                     <li class="page-item">
-                        <a class="page-link" href="?page={{ hoteles.next_page_number }}">Next</a>
+                        <a class="page-link" href="?page={{ hoteles.next_page_number }}{% if request.GET.search %}&q={{ request.GET.search }}{% endif %}">Next</a>
                     </li>
                 {% else %}
                     <li class="page-item disabled">
