@@ -1,9 +1,19 @@
-body{
-    background-color: antiquewhite;
-    text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Sansita+Swashed&family=Texturina:wght@100&display=swap');
+
+
+#numhab{
+    font-family: 'Sansita Swashed', cursive;
+}
+#infhab{
+    align-self: auto;
+    text-align: right;
 }
 
-.hab{
-    text-align: right;
-    text-decoration: aqua;
-  }
+.zoom
+{
+ transition: transform .5s;
+}
+.zoom:hover
+{
+ transform: scale(1.1);
+}

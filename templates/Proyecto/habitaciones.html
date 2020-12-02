@@ -1,7 +1,11 @@
 {% extends "Proyecto/home2.html" %}
+{% load staticfiles %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'style_hab.css' %}">
+{% endblock %}
 {% block content %}
     <br>
-    <h1>{{ habitacion.num_habitacion }}</h1>
+    <h1 id="numhab"> Habitación {{ habitacion.num_habitacion }}</h1>
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -31,7 +35,7 @@
                     <li>Tipo de habitacion: {{ habitacion.tipo_habitacion }}</li>
                 </ul>
             </div>
-            <div class="col-md">
+            <div class="col-md" id="infhab">
                 <h1>Informacion Adicional</h1>
                 <p>{{ habitacion.descripcion }}</p>
             </div>
@@ -42,13 +46,13 @@
         {% if request.user.is_authenticated and habitacion.estado == "Disponible" %}
             <div class="col-12 ">
                 <a type="Summy" href={% url "reservar" habitacion.id %}>
-                    <button class="btn btn-outline-success my-2 my-sm-0">Reservar</button>
+                    <button class="btn btn-outline-success my-2 my-sm-0 zoom">Reservar</button>
                 </a>
             </div>
         {% elif request.user.is_authenticated and habitacion.estado == "Ocupado" %}
             <div class="col-12">
                 <a type="Summy" href={% url "eliminar_reserva" habitacion.id %}>
-                    <button class="btn btn-outline-success my-2 my-sm-0">Eliminar Reserva</button>
+                    <button class="btn btn-outline-success my-2 my-sm-0 zoom">Eliminar Reserva</button>
                 </a>
             </div>
         {% else %}

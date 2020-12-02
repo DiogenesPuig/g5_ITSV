@@ -1,5 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Sansita+Swashed&family=Texturina:wght@100&display=swap');
+
 .descp{
     font-style: italic;
+}
+
+#titulito{
+    margin-bottom: 70px;
+    font-variant-caps: all-petite-caps;
+    text-shadow: 5px 5px 15px #000;          /////////////////
+}
+
+#hnom{
+    font-family: 'Sansita Swashed', cursive;
 }
 
 #star{
@@ -13,4 +25,23 @@
 .img{
     width: 700px;
     height: 400px;
+}
+
+.carousel-home img{
+    width: 300px;
+    height: 800px;
+}
+
+.zoom
+{
+ transition: transform .5s;
+}
+.zoom:hover
+{
+ transform: scale(1.1);
+}
+
+#años{
+    font-variant-caps: all-petite-caps;
+
 }

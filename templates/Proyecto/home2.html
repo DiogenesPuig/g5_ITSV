@@ -37,11 +37,11 @@
             <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
         </ol>
 
-        <div class="carousel-inner">
+        <div class="carousel-inner carousel-home">
             <div class="carousel-item active">
                 <img src="/media/img_hotel/web1.jpg" class="d-block w-100" alt="websiteimage0">
                 <div class="carousel-caption">
-                    <h1 class="display-2"> Los Hoteles Mas Baratos</h1>
+                    <h1 class="display-2" id="titulito"> Los Hoteles Mas Baratos</h1>
                     <!--<h3></h3>
                     <button type="button" class="btn btn-outline-light btn-lg">Piedi uno ya!</button> <!--Agregar <a>
                     <button type="button" class="btn btn-primary btn-lg">Piedi uno ya!</button>-->
@@ -71,7 +71,7 @@
     <div class="container-responsive">
         <div class="row welcome text-center">
             <div class="col-12">
-                <h1 class="display-4">Contamos con "años" de experiencia </h1>
+                <h1 class="display-4" id="años">Contamos con "años" de experiencia! </h1>
             </div>
             <div class="col-12">
                 <p class="lead">Contamos con mas de 10 hoteles!</p>
@@ -84,7 +84,7 @@
             <form method="get">
                 <div id="custom-search-input">
                   <div class="input-group col-md-12">
-                    <input type="text" class="form-control" placeholder="Buscar..." name="buscar" value = "{{ request.GET.buscar }}">
+                    <input type="text" class="form-control" placeholder="Buscar hoteles por Nombre o Dirección..." name="buscar" value = "{{ request.GET.buscar }}">
                     <span class="input-group-list">
                       <i class="icon icon-search"></i>
                       <button type="submit" class="btn btn-outline-success my-2 my-sm-0">Buscar</button>
@@ -105,12 +105,12 @@
                 <div class="col-lg-1"></div>
                 <div class="row padding col-lg-10 rounded bg-light text-dark border" >
                     <div class="col">
-                        <h1>{{ hotel.nombre }}</h1>
+                        <h1 id="hnom">{{ hotel.nombre }}</h1>
                         <h4 class="descp">Direccion del Hotel: <span id="direcc">{{hotel.direccion}}</span></h4>
                         <h4 class="descp">Estrellas: <span id="star">{{hotel.estrellas}}</span></h4> 
 
                         <a href="{% url 'hoteles' hotel.id %}">
-                            <button class="btn btn-primary btn-lg">Ver Habitaciones Disponibles</button>
+                            <button class="btn btn-primary btn-lg zoom">Ver Habitaciones Disponibles</button>
                         </a>
                     </div>
                     <div class="col">
