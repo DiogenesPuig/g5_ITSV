@@ -1,0 +1,16 @@
+.descp{
+    font-style: italic;
+}
+
+#star{
+    color: goldenrod;
+}
+
+#direcc{
+    text-decoration-line: underline;
+}
+
+.img{
+    width: 700px;
+    height: 400px;
+}

@@ -46,11 +46,14 @@ def LoginView(request):
         password = request.POST.get('password')
         user = authenticate(request, username=username, password=password)
         if user is not None:
+            messages.success(request, "Bienvenido " + username)
             login(request, user)
             return redirect('home')
         else:
             messages.error(request, "Username OR password is incorrect ")
             return render(request, 'Proyecto/login.html', context)
+
+
 
     return render(request, 'Proyecto/login.html', context)
 
