@@ -11,8 +11,8 @@
     {% block styles %}
         <link rel="stylesheet" href="{% static 'style_home2.css' %}">
     {% endblock %}
-    <link rel="icon" href="{% static 'hotel_icon.png'%}">
-    
+    <link rel="icon" href="{% static 'hotel_icon.png' %}">
+
 
 </head>
 <body>
@@ -23,15 +23,14 @@
 {% endblock %}
 
 {% block content %}
-{% for message in messages %}
-    <div class="container">
-        <div class="row justify-content-center"></div>
+    {% for message in messages %}
+        <div class="container">
+            <div class="row justify-content-center"></div>
             <div class="col-md-5"></div>
             <div class="alert alert-success col" role="alert" style="text-align: center">{{ message }}</div>
             <div class="col-md-5"></div>
         </div>
-    </div>        
-{% endfor %}
+    {% endfor %}
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -45,7 +44,7 @@
                 <div class="carousel-caption">
                     <h1 class="display-2" id="titulito"> Los Hoteles Mas Baratos</h1>
                     <!--<h3></h3>
-                    <button type="button" class="btn btn-outline-light btn-lg">Piedi uno ya!</button> <!--Agregar <a>
+                    <button type="button" class="btn btn-outline-light btn-lg">Piedi uno ya!</button> Agregar <a>
                     <button type="button" class="btn btn-primary btn-lg">Piedi uno ya!</button>-->
                 </div>
             </div>
@@ -60,7 +59,11 @@
     <div class="container-fluid">
         <div class="row jumbotron">
             <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-10">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                    culpa qui officia deserunt mollit anim id est laborum.</p>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-2">
                 <!--<a href="">
@@ -82,34 +85,32 @@
     </div>
     <div class="container">
         <div class="row">
-          <div class="col-md-12 search">
-            <form method="get">
-                <div id="custom-search-input">
-                  <div class="input-group col-md-12">
-                    <input type="text" class="form-control" placeholder="Buscar hoteles por Nombre o Dirección..." name="buscar" value = "{{ request.GET.buscar }}">
-                    <span class="input-group-list">
-                      <i class="icon icon-search"></i>
-                      <button type="submit" class="btn btn-outline-success my-2 my-sm-0">Buscar</button>
-                      <br>
-                      <br>
-                      <br>
-                    </span>
-                  </div>
-                </div>
-            </form>
-          </div>
+            <div class="col-md-12 search">
+                <form method="get">
+                    <div id="custom-search-input">
+                        <div class="input-group col-md-12">
+                            <input type="text" class="form-control" placeholder="Buscar hoteles por Nombre o Dirección..." name="buscar" value="{{ request.GET.buscar }}">
+                            <span class="input-group-list">
+                            <i class="icon icon-search"></i>
+                            <button type="submit" class="btn btn-outline-success my-2 my-sm-0">Buscar</button>
+                        </span>
+                        </div>
+                        <hr class="my-4">
+                    </div>
+                </form>
+            </div>
         </div>
-      </div>
+    </div>
 
     <div class="container-fluid padding">
         {% for hotel in hoteles %}
             <div class="row padding">
                 <div class="col-lg-1"></div>
-                <div class="row padding col-lg-10 rounded bg-light text-dark border" >
+                <div class="row padding col-lg-10 rounded bg-light text-dark border">
                     <div class="col">
                         <h1 id="hnom">{{ hotel.nombre }}</h1>
-                        <h4 class="descp">Direccion del Hotel: <span id="direcc">{{hotel.direccion}}</span></h4>
-                        <h4 class="descp">Estrellas: <span id="star">{{hotel.estrellas}}</span></h4> 
+                        <h4 class="descp">Direccion del Hotel: <span id="direcc">{{ hotel.direccion }}</span></h4>
+                        <h4 class="descp">Estrellas: <span id="star">{{ hotel.estrellas }}</span></h4>
 
                         <a href="{% url 'hoteles' hotel.id %}">
                             <button class="btn btn-primary btn-lg zoom">Ver Habitaciones Disponibles</button>
@@ -117,7 +118,7 @@
                     </div>
                     <div class="col">
                         <!-- -->
-                        <img src=/media/{{ hotel.img_hotel }} class="img-fluid img">
+                        <img alt="..." src="/media/{{ hotel.img_hotel }}" class="img-fluid img">
                         <!-- -->
                     </div>
                 </div>
@@ -130,7 +131,8 @@
             <ul class="pagination justify-content-center">
                 {% if hoteles.has_previous %}
                     <li class="page-item">
-                        <a class="page-link" href="?page={{ hoteles.previous_page_number }}{% if request.GET.search %}&q={{ request.GET.search }}{% endif %}">Previous</a>
+                        <a class="page-link" href="?page=
+                                {{ hoteles.previous_page_number }}{% if request.GET.search %}&q={{ request.GET.search }}{% endif %}">Previous</a>
                     </li>
                 {% else %}
                     <li class="page-item disabled">
@@ -150,7 +152,8 @@
                 {% endfor %}
                 {% if hoteles.has_next %}
                     <li class="page-item">
-                        <a class="page-link" href="?page={{ hoteles.next_page_number }}{% if request.GET.search %}&q={{ request.GET.search }}{% endif %}">Next</a>
+                        <a class="page-link" href="?page=
+                                {{ hoteles.next_page_number }}{% if request.GET.search %}&q={{ request.GET.search }}{% endif %}">Next</a>
                     </li>
                 {% else %}
                     <li class="page-item disabled">
