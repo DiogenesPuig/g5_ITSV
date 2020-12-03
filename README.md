@@ -3,7 +3,7 @@
 #### Integrantes: Puig Diogenes - Franco Rossi
 
 ## Objetivo
-Página de hotelería dinámica con un sistema de reserva por usuarios; en la cual se pueden definir diversos hoteles y habitaciones con el fin de que los usuarios logren acceder a dichos elementos y poder hacer reservas.
+Página de hotelería dinámica(Es decir, reservas rápidas con el fin de utilizarlas en el momento, y no planeadas) con un sistema de reserva por usuarios; en la cual se pueden definir diversos hoteles y habitaciones con el fin de que los usuarios logren acceder a dichos elementos y poder hacer reservas.
 
 ## Requirements
 - Django==2.2
