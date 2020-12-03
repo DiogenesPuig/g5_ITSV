@@ -2,11 +2,15 @@ from django.contrib import admin
 from Proyecto.models import *
 
 
+class ReservasInline(admin.TabularInline):
+    model = Cliente.reservas.through
 
 class ClienteAdmin(admin.ModelAdmin):
     list_display = ('nombre', 'apellido','mail', 'telefono', 'codigo')
+    inlines = [
+        ReservasInline,
+    ]
 
-    
     fieldsets = (
         ('Datos Personales', {
             'fields' : ('nombre', 'apellido', 'codigo','reservas')
@@ -18,7 +22,6 @@ class ClienteAdmin(admin.ModelAdmin):
 
 class AdministradorAdmin(admin.ModelAdmin):
     list_display = ('nombre', 'apellido','mail', 'telefono', 'codigo')
-
     
     fieldsets = (
         ('Datos Personales', {
