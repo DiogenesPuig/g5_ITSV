@@ -93,7 +93,7 @@ def HotelesView2(request, Hotel):
     hab = hoteles.habitaciones.count()
     paginator = Paginator(h, 9)
     page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)      
+    page_obj = paginator.get_page(page_number)
 
     context = {
         'hoteles': hoteles,
