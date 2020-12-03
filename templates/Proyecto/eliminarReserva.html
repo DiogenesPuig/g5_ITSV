@@ -1,28 +1,35 @@
 {% extends "Proyecto/home2.html" %}
-
+{% load staticfiles %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'style_eliminar.css' %}">
+{% endblock %}
 {% block content %}
     <div class="container-fluid padding">
-        {% for habitacion in reserva %}
-            <div class="row padding">
-                <div class="col-lg-1"></div>
-                <div class="row padding col-lg-10 rounded bg-light text-dark border">
-                    <div class="col">
-                        <h1>{{ habitacion.num_habitacion }}</h1>
-                        <p>texto aleatorio PD: podriamos hacer esto en cada hotel?</p>
-                        <a href="{% url "habitaciones" habitacion.id %}">
-                            <button class="btn btn-primary btn-lg">Ver Habitacion</button>
-                        </a>
-                    </div>
-                    <div class="col">
+        {% if hab_count == 0%}
+            <h1 id="nohay">No tienes reservas realizadas!</h1>
+        {% else %}    
+            {% for habitacion in reserva %}
+                <div class="row padding">
+                    <div class="col-lg-1"></div>
+                    <div class="row padding col-lg-10 rounded bg-light text-dark border">
+                        <div class="col">
+                            <h1>{{ habitacion.num_habitacion }}</h1>
+                            <p>texto aleatorio PD: podriamos hacer esto en cada hotel?</p>
+                            <a href="{% url "habitaciones" habitacion.id %}">
+                                <button class="btn btn-primary btn-lg">Ver Habitacion</button>
+                            </a>
+                        </div>
+                        <div class="col">
 
-                        <img src=/media/{{ habitacion.img_habitacion }} class="img-fluid">
+                            <img src=/media/{{ habitacion.img_habitacion }} class="img-fluid">
 
+                        </div>
                     </div>
+                    <div class="col-lg-1"></div>
                 </div>
-                <div class="col-lg-1"></div>
-            </div>
-            <br>
-        {% endfor %}
+                <br>
+            {% endfor %}
+        {% endif %}
         <nav aria-label="">
             <ul class="pagination justify-content-center">
                 {% if reserva.has_previous %}

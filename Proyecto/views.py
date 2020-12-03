@@ -145,6 +145,7 @@ def hacerReserva(request, Habitacion):
 
 
 def deshacerReserva(request):
+
     if request.user.is_authenticated:
         if request.user.username == 'admin':
 
@@ -153,12 +154,14 @@ def deshacerReserva(request):
         else:
             cliente = Cliente.objects.get(username=request.user.username)
             habitaciones = cliente.reservas.all()
+            hab_count = habitaciones.count()        
             paginator = Paginator(habitaciones, 10)
             page_number = request.GET.get('page')
             page_obj = paginator.get_page(page_number)
             context = {
                 'cliente': cliente,
-                'reserva':page_obj
+                'reserva':page_obj,
+                'hab_count': hab_count,
             }
             return render(request, "Proyecto/eliminarReserva.html", context)
     else:
