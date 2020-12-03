@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Sansita+Swashed&family=Texturina:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&family=Sansita+Swashed&family=Texturina:wght@100&display=swap');
 
 .descp{
     font-style: italic;
@@ -44,4 +44,10 @@
 #años{
     font-variant-caps: all-petite-caps;
 
+}
+
+.sorry{
+    font-family: 'Sansita Swashed', cursive;
+    text-align: center;
+    font-size: 700%;
 }

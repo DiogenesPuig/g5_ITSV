@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&family=Sansita+Swashed&family=Texturina:wght@100&display=swap');
 
+.hab_estilo_descp{
+    font-family: 'Raleway', sans-serif;
+}
 
 #numhab{
     font-family: 'Sansita Swashed', cursive;

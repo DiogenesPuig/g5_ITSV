@@ -1,7 +1,7 @@
 {% extends "Proyecto/home2.html" %}
 {% load staticfiles %}
 {% block styles %}
-<link rel="stylesheet" href="{% static 'style_hab.css' %}">
+<link rel="stylesheet" href="{% static 'style_hab_reserva.css' %}">
 {% endblock %}
 {% block content %}
     <br>
@@ -27,16 +27,16 @@
     <div class="container-fluid" id="Descripcion">
         <div class="row">
             <div class="col-md">
-                <h1>Caracteristicas</h1>
+                <h1 class="hab_estilo_descp">Caracteristicas:</h1>
                 <ul>
                     <li>Cantidad de baños:{{ habitacion.cant_banios }}</li>
                     <li>Cantidad de Habitaciones: {{ habitacion.cant_dormitorios }}</li>
-                    <li>Precio por noche:{{ habitacion.precio_noche }}</li>
+                    <li>Precio por noche: ${{ habitacion.precio_noche }}</li>
                     <li>Tipo de habitacion: {{ habitacion.tipo_habitacion }}</li>
                 </ul>
             </div>
             <div class="col-md" id="infhab">
-                <h1>Informacion Adicional</h1>
+                <h1 class="hab_estilo_descp">Informacion Adicional:</h1>
                 <p>{{ habitacion.descripcion }}</p>
             </div>
         </div>

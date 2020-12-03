@@ -9,9 +9,10 @@
                     <div class="row padding col-lg-10 rounded bg-light text-dark border">
                         <div class="col">
                             <h1>{{ habitacion.num_habitacion }}</h1>
-                            <p>texto aleatorio PD: podriamos hacer esto en cada hotel?</p>
+                            <p>Tipo de Habitación: {{habitacion.tipo_habitacion}}</p>
+                            <p>Precio por Noche: ${{habitacion.precio_noche}}</p>
                             <a href="{% url "habitaciones" habitacion.id %}">
-                                <button class="btn btn-primary btn-lg">Ver Habitacion</button>
+                                <button class="btn btn-primary btn-lg zoom">Ver Habitacion</button>
                             </a>
                         </div>
                         <div class="col">
@@ -19,7 +20,7 @@
                         </div>
                     </div>
                 {% else %}
-                    <div class="row padding col-lg-10 rounded"></div>
+                    <div class="row padding col-lg-10 rounded sorry"></div>
                 {% endif %}
                 <div class="col-lg-1"></div>
             </div>
