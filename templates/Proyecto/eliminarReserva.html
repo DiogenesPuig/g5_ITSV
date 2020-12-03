@@ -2,6 +2,7 @@
 {% load staticfiles %}
 {% block styles %}
 <link rel="stylesheet" href="{% static 'style_eliminar.css' %}">
+<link rel="stylesheet" href="{% static 'style_hab.css' %}">
 {% endblock %}
 {% block content %}
     <div class="container-fluid padding">
@@ -13,8 +14,9 @@
                     <div class="col-lg-1"></div>
                     <div class="row padding col-lg-10 rounded bg-light text-dark border">
                         <div class="col">
-                            <h1>{{ habitacion.num_habitacion }}</h1>
-                            <p>texto aleatorio PD: podriamos hacer esto en cada hotel?</p>
+                            <h1 id="numhab">{{ habitacion.num_habitacion }}</h1>
+                            <h4 class="descp">Tipo de Habitación: {{ habitacion.tipo_habitacion }}</h4>
+                            <h4 class="descp">Precio por Noche: ${{ habitacion.precio_noche }}</h4>
                             <a href="{% url "habitaciones" habitacion.id %}">
                                 <button class="btn btn-primary btn-lg">Ver Habitacion</button>
                             </a>

@@ -18,6 +18,12 @@
     text-align: right;
 }
 
+.caracc{
+    font-family: 'Raleway';
+    font-size: larger;
+    text-shadow: 1px 1px 15px #000;
+}
+
 .zoom
 {
  transition: transform .5s;

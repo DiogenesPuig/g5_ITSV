@@ -1,9 +1,13 @@
 {% extends 'Proyecto/home2.html' %}
+{% load staticfiles %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'style_hab.css' %}">
+{% endblock %}
 
 {% block content %}
     <div class="container-fluid padding">
         {% if hab_o == hab %}
-            <h1>Sorry master, tamo hasta las manos</h1>
+            <h1 id="hasta_las_manos">Sorry master, tamo hasta las manos</h1>
         {% else %}
             {% for habitacion in habitaciones %}
                 <div class="row padding">
@@ -11,9 +15,9 @@
                     {% if habitacion.estado == "Disponible" %}
                         <div class="row padding col-lg-10 rounded bg-light text-dark border">
                             <div class="col">
-                                <h1>{{ habitacion.num_habitacion }}</h1>
-                                <p>Tipo de Habitación: {{ habitacion.tipo_habitacion }}</p>
-                                <p>Precio por Noche: ${{ habitacion.precio_noche }}</p>
+                                <h1 id="numhab">{{ habitacion.num_habitacion }}</h1>
+                                <h4 class="descp">Tipo de Habitación: {{ habitacion.tipo_habitacion }}</h4>
+                                <h4 class="descp">Precio por Noche: ${{ habitacion.precio_noche }}</h4>
                                 <a href="{% url "habitaciones" habitacion.id %}">
                                     <button class="btn btn-primary btn-lg zoom">Ver Habitacion</button>
                                 </a>

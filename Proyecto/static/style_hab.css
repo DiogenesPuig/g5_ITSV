@@ -17,3 +17,16 @@
 {
  transform: scale(1.1);
 }
+
+#hasta_las_manos{
+    margin-top: 100px;
+    font-family: 'Sansita Swashed', cursive;
+    text-align: center;
+    font-size: 300%;
+    margin-bottom: 200px;
+}
+
+
+.descp{
+    font-style: italic;
+}
